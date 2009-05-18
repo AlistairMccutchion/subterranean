@@ -1,0 +1,6 @@
+rock	rock	420	260	100
+rock_pos	point	400	260	100
+mainst_pos	point	225	25	100
+sewerend_pos	point	590	235	100
+player	player	220	224	60
+goo	goo	75	350	100
