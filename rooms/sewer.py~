@@ -62,10 +62,7 @@ class Room(level.Room):
                 ])
 
     def _use_exit(self):
-        self.script([
-            """END OF DEMO""",
-            ])
-        #self.goto('mainst')
+        self.goto('mainst')
 
     def use_sewerend(self):
         self.player.walkto('sewerend_pos',self._use_sewerend)
