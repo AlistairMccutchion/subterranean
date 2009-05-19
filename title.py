@@ -13,11 +13,11 @@ class Title(engine.State):
         
     def init(self):
         self.game.music('default')
-        self.bkgr = pygame.image.load(os.path.join("data","title","title.jpg")).convert()
+        self.bkgr = pygame.image.load(os.path.join("data","title","title.png")).convert()
         self.frame = 0
         
-        import rooms.sewer
-        self.next = rooms.sewer.Room(self.game,'title')
+        import rooms.test
+        self.next = rooms.test.Room(self.game,'title')
 
         
     def update(self,screen):

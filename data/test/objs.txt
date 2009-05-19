@@ -1,0 +1,1 @@
+player	player	130	254	60
