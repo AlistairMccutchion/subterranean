@@ -1,5 +1,5 @@
 #coding: -utf-8-
-import os
+import os,math
 
 import pygame
 from pygame.locals import *
@@ -57,26 +57,46 @@ class Obj:
                 self.facing = 'right'
             else:
                 self.facing = 'left'
+
+        #KALLE: Alla väderstreck!
+        #KALLE: _rect > rect == E/N
+        #KALLE: _rect < rect == W/S
             
         if self._rect != None:
-            if self._rect.x < self.rect.x:
-                self.facing = 'right'
-            if self._rect.x > self.rect.x:
-                self.facing = 'left'
-        
+            if self._rect.x < self.rect.x and self._rect.y == self.rect.y:
+                self.facing = 'e'
+            elif self._rect.x > self.rect.x and self._rect.y == self.rect.y:
+                self.facing = 'w'
+            elif self._rect.x == self.rect.x and self._rect.y < self.rect.y:
+                self.facing = 's'
+            elif self._rect.x == self.rect.x and self._rect.y > self.rect.y:
+                self.facing = 'n'
+            elif self._rect.x < self.rect.x and self._rect.y < self.rect.y:
+                self.facing = 'se'
+            elif self._rect.x > self.rect.x and self._rect.y > self.rect.y:
+                self.facing = 'nw'
+            elif self._rect.x < self.rect.x and self._rect.y > self.rect.y:
+                self.facing = 'ne'
+            elif self._rect.x > self.rect.x and self._rect.y < self.rect.y:
+                self.facing = 'sw'
+
+            #KALLE: Sätt scale om den är ändrad. (Galen matematik, behöver rumsspecifika grejer här.)
+            self.scale = math.ceil((self.rect.y + 181)/3.7)
+
         cls = '%s_%s'%(self.state,self.facing)
         if cls not in self.data:
             cls = 'default'
         if cls in self.data:
             r = self.data[cls]
-            
-            self.image = r[self.frame%r['frames']]
+
+            #KALLE: Lade till self._scale för att skapa ned bilden
+            self.image = self._scale(r[self.frame%r['frames']])
+            #self.image = r[self.frame%r['frames']]
             
             if (self.level.frame%r['speed']) == 0:
                 self.frame += 1
                 
         self._rect = pygame.Rect(self.rect)
-                
                 
     def _scale(self,img):
         
