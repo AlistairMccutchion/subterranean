@@ -17,6 +17,24 @@ class Room(level.Room):
         self.script([
             """player:Tab = Inventory,  RightMouse = Examine item"""
             ])
+    def use_grumpyman(self):
+        self.player.walkpos('grumpyman',self._use_grumpyman)
+
+    def _use_grumpyman(self):
+        self.say("""grumpyman:Whatcha lookin' at?""")
+        self.talkto(self.talk_grumpyman,'first')
+    
+    def talk_grumpyman(self,topic):
+        opts = []
+        if topic == "first":
+            opts.append((
+                    """You look kind of big for a dwarf...""",[None,
+                    """grumpyman:I'm big boned, so what!?""",
+                    ],'first'))
+            opts.append((
+                    """Uh, never mind...""",[None,]
+                    ,'exit'))
+        return opts
 
     def use_rock(self):
         self.player.walkpos('rock',self._use_rock)
