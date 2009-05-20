@@ -1,1 +1,4 @@
 player	player	130	254	60
+rock	rock	420	260	100
+rock_pos	point	420	260	100
+dropzone	dropzone	120	260	100

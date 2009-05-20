@@ -9,6 +9,7 @@ from cnst import *
 from pgu import engine
 
 INV_W = 71
+INV_H = 71
 
 class Obj:
     def __init__(self,l,name,src,pos,scale=100):
@@ -182,7 +183,8 @@ class Obj:
         self._rect = None
         
     def walkto(self,pos,_path_stop = None):
-        self.level._walkto(self,pos,_path_stop)
+        if not self.level.showinventory:
+            self.level._walkto(self,pos,_path_stop)
         
         
     def blank(self):
@@ -226,6 +228,7 @@ class Level:
     def __init__(self,game,src):
         self.game,self.src = game,src
         self.frame = 0
+        self.showinventory = False
         
     def layers_build(self):
         img = self.i_layers
@@ -494,28 +497,37 @@ class Level:
         self.paint_main(screen)
         
     def paint_inv_box(self,screen):
-        screen.fill((0,0,0),(0,400,640,80))
-        
-        for n in xrange(0,9):
-            x,y = 3+INV_W*n,408
-            screen.fill((0x55,0x55,0x55),(x-2,y-2,67,67))
-            #screen.fill((0xaa,0xaa,0xaa),(x-4,y-4,72,72))
-            #screen.fill((0x55,0x55,0x55),(x,y,64,64))
-        
-        n = 0
-        invs = self.game.data['inv'][:]
-        if self.item in invs:
-            invs.remove(self.item)
-        for item in invs:
-            if item != None:
-                if item not in self.items:
-                    #KALLE: Ladda separat bild för item inuti inventory
-                    self.items[item] = pygame.image.load(os.path.join('data','inv','icons','%s.png'%item))
-                img = self.items[item]
-                x,y = 3+71*n,408
-                screen.blit(img,(x,y))
+        #KALLE: Lade toggler för visning av inventoryt
+        if self.showinventory:
+            screen.fill((0,0,0),(75,50,433,292))
             
-            n += 1
+            #KALLE: Rita fler rader
+            y = -13 #Ugliest hack evar?:D
+            for row in xrange(0,4):
+                y += 71
+                for n in xrange(0,6):
+                    x = 82+INV_W*n
+                    row = row +1
+                    screen.fill((0x55,0x55,0x55),(x-2,y-2,67,67))
+                    #screen.fill((0xaa,0xaa,0xaa),(x-4,y-4,72,72))
+                    #screen.fill((0x55,0x55,0x55),(x,y,64,64))
+            
+            n = 0
+            row = 0
+            invs = self.game.data['inv'][:]
+            if self.item in invs:
+                invs.remove(self.item)
+            for item in invs:
+                if item != None:
+                    if item not in self.items:
+                        #KALLE: Ladda separat bild för item inuti inventory
+                        self.items[item] = pygame.image.load(os.path.join('data','inv','icons','%s.png'%item))
+                    img = self.items[item]
+                    x = x = 82+INV_W*n
+                    y = 71
+                    screen.blit(img,(x,y))
+                
+                n += 1
             
         
     def paint_normal(self,screen):
@@ -526,7 +538,7 @@ class Level:
     def paint_inv(self,screen):
         self.paint_main(screen)
         self.paint_inv_box(screen)
-        
+
         item = self.item
         if item != None:
             if item not in self.items:
@@ -541,8 +553,6 @@ class Level:
         
     def update(self,screen):
         return self.paint(screen)
-        
-
             
     def follow(self,s):
         view = self.view
@@ -572,13 +582,13 @@ class Level:
             return r
         
         
-        
-        
         if self.mode == 'normal' and self.item != None:
             self.mode = 'inv'
+            self.showinventory = True
         if self.mode == 'inv' and self.item == None:
             self.mode = 'normal'
-        
+            self.showinventory = False
+
         for o in self.objs.values():
             if o.text_timer:
                 o.text_timer -= 1
@@ -684,6 +694,14 @@ class Level:
         
     def event(self,e):
         self._e = e
+        if e.type is KEYDOWN:
+            if e.scancode == 23:
+                if(self.showinventory):
+                    self.showinventory = False
+                else:
+                    self.showinventory = True
+                
+
         if e.type is MOUSEMOTION:
             e = pygame.event.Event(e.type,{
                 'pos':(e.pos[0]+self.view.x,e.pos[1]+self.view.y),
@@ -694,21 +712,18 @@ class Level:
                 'pos':(e.pos[0]+self.view.x,e.pos[1]+self.view.y),
                 'button':e.button,
                 })
-                
+
         getattr(self,'event_%s'%self.mode)(e)
                 
     def event_normal(self,e):
-        if e.type is MOUSEBUTTONDOWN and e.pos[1] < 400:
+        if e.type is MOUSEBUTTONDOWN and self.showinventory == False:
             b1,b2,b3 = pygame.mouse.get_pressed()
             if b1 == 1:
                 for hover in self.find(e.pos):
-                    print hover
                     if hover: #use_ action
                         fnc = 'use_%s'%hover
-                        print fnc
                         if hasattr(self,fnc):
                             r = getattr(self,fnc)()
-                            print r
                             if r != False: return r
                     
                 #self.walkto(self.player,e.pos)
@@ -723,32 +738,61 @@ class Level:
                             r = getattr(self,fnc)()
                             print r
                             if r != False: return r
-                
-            return
-        if e.type is MOUSEBUTTONDOWN and e.pos[1] > 400:
-            n = self._e.pos[0]/INV_W
-            if n < len(self.game.data['inv']):
-                self.item = self.game.data['inv'][n]
-                self.sfx('get')
-                #del self.game.data['inv'][n]
-                
-    def event_inv(self,e):
-        if e.type is MOUSEBUTTONDOWN and e.pos[1] < 400:
-            for hover in self.find(e.pos):
-                fnc = '%s_%s'%(self.item,hover)
-                print fnc
-                if hasattr(self,fnc):
-                    r = getattr(self,fnc)()
-                    print r
-                    if r != False: return r
             return
 
-        #KALLE: Notering: itemhantering i inventoryt                    
+        #KALLE: Notering: Klicka i inventoryt och får en item i "handen". Stäng inventoryt
+        if e.type is MOUSEBUTTONDOWN and self.showinventory == True and self._e.pos[0] > 77 and self._e.pos[0] < 501 and self._e.pos[1] > 48 and self._e.pos[1] < 342:
+            b1,b2,b3 = pygame.mouse.get_pressed()
+
+            #KALLE: Lägg på marginalen 50 från skärmens övre kant
+            row = (self._e.pos[1]-50)/INV_H
+
+            #KALLE: Lägg på marginalen 75 från skärmens vänstra kant
+            n = (self._e.pos[0]-75)/INV_W 
+            #KALLE: Och så rätt rad...
+            n += 6*row
+
+            #KALLE: Fulhack för att vi inte vill ha mer än 4 (0-3) rader.
+            if n < len(self.game.data['inv']) and row < 4:
+                self.item = self.game.data['inv'][n]
+                if b1 == 1:
+                    self.sfx('get')
+                    self.mode = 'inv'
+                    self.showinventory = False
+                elif b3 == 1:
+                    #TODO: Show text nicer somehow. Also, make examine_foo not room-dependent!
+                    fnc = 'examine_%s'%self.item
+                    #KALLE: Vi vill inte dra runt objektet!
+                    self.item = None
+                    if hasattr(self,fnc):
+                        r = getattr(self,fnc)()
+                        if r != False: return r
+
+    def event_inv(self,e):
+        #KALLE: Notering: Släpp/lägg tillbaka utanför inventoryt
+        if e.type is MOUSEBUTTONDOWN and self.item != None:
+            b1,b2,b3 = pygame.mouse.get_pressed()
+            if b1 == 1:
+                print "Used",self.item
+                for hover in self.find(e.pos):
+                    fnc = '%s_%s'%(self.item,hover)
+                    if hasattr(self,fnc):
+                        r = getattr(self,fnc)()
+                        print r
+                        if r != False: return r
+                return
+            elif b3 == 1:
+                print "Put back ",self.item,"in inventory"
+                self.item = None
+                self.showinventory = False
+
+            
+
+        #KALLE: Notering: flytta items i inventoryt
         if e.type is MOUSEBUTTONDOWN and e.pos[1] > 400:
             #self.game.data['inv'].append(self.item)
             item = self.item
             self.item = None
-            print e.pos[1]
             if item in self.inv:
                 self.inv.remove(item)
             self.inv.append(item)
