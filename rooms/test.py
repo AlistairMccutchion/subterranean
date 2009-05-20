@@ -31,7 +31,7 @@ class Room(level.Room):
                     """You look kind of big for a dwarf...""",[None,
                     """grumpyman:I'm big boned, so what!?""",
                     ],'first'))
-            if 'worms' in self.info:
+            if 'worm' in self.info:
                 opts.append((
                     """Did you really eat that worm?""",[None,
                     """grumpyman:Yup. T'was delicious too!""",
