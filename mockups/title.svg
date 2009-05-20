@@ -15,7 +15,7 @@
    sodipodi:version="0.32"
    inkscape:version="0.46"
    version="1.0"
-   sodipodi:docname="elevatorshaft.svg"
+   sodipodi:docname="title.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    inkscape:export-filename="/home/kalle/devel/subterranean/data/title/title.png"
    inkscape:export-xdpi="90"
@@ -44,7 +44,7 @@
       <stop
          id="stop8725"
          offset="1"
-         style="stop-color:#2e3436;stop-opacity:0;" />
+         style="stop-color:#2e3436;stop-opacity:0" />
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
@@ -255,16 +255,6 @@
        y2="584.07648" />
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient8721"
-       id="linearGradient8512"
-       x1="683.21429"
-       y1="669.07648"
-       x2="683.21429"
-       y2="525.07648"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(4.0000009,0,0,2.2222222,-1877.1434,-743.9073)" />
-    <linearGradient
-       inkscape:collect="always"
        xlink:href="#linearGradient8506"
        id="linearGradient8516"
        gradientUnits="userSpaceOnUse"
@@ -293,26 +283,6 @@
        y1="671.07648"
        x2="734.15875"
        y2="559.07648" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient8604"
-       id="linearGradient8610"
-       x1="1105.764"
-       y1="476.07648"
-       x2="1065.6035"
-       y2="476.07648"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,1.2,82,-55.615297)" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient8604"
-       id="linearGradient8614"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,1.2,-2011.4286,-55.615294)"
-       x1="1105.764"
-       y1="476.07648"
-       x2="1065.6035"
-       y2="476.07648" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient8618"
@@ -430,7 +400,7 @@
        y1="482.09375"
        x2="756.19257"
        y2="454.0592"
-       gradientTransform="translate(0,-10.000005)" />
+       gradientTransform="translate(0,-301)" />
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient8969"
@@ -453,6 +423,89 @@
        fx="764.1178"
        fy="405.50266"
        r="30.441278" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient8721"
+       id="linearGradient7048"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(4.0000009,0,0,2.6666666,-1157.1435,-1050.1274)"
+       x1="683.21429"
+       y1="678.21149"
+       x2="683.21429"
+       y2="535.0824" />
+    <inkscape:perspective
+       id="perspective7170"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <linearGradient
+       id="linearGradient7125"
+       inkscape:collect="always">
+      <stop
+         id="stop7127"
+         offset="0"
+         style="stop-color:#cacbc9;stop-opacity:1;" />
+      <stop
+         id="stop7129"
+         offset="1"
+         style="stop-color:#cacbc9;stop-opacity:0;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient7149"
+       inkscape:collect="always">
+      <stop
+         id="stop7151"
+         offset="0"
+         style="stop-color:#2c2d2b;stop-opacity:1" />
+      <stop
+         id="stop7153"
+         offset="1"
+         style="stop-color:#3f413e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient7224"
+       inkscape:collect="always">
+      <stop
+         id="stop7226"
+         offset="0"
+         style="stop-color:#444642;stop-opacity:1" />
+      <stop
+         id="stop7228"
+         offset="1"
+         style="stop-color:#3f413e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient7224"
+       id="linearGradient8021"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.0617763,0,0,0.9866221,-1111.0966,163.21412)"
+       x1="934.71429"
+       y1="380.07648"
+       x2="934.71429"
+       y2="413.09161" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient7149"
+       id="linearGradient8023"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,-1,-1037.7857,158.14285)"
+       x1="1058.7142"
+       y1="-361.07648"
+       x2="1058.7142"
+       y2="-379.07648" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient7125"
+       id="linearGradient8025"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,4.1884021,-1037.7857,-2767.7503)"
+       x1="1063.7142"
+       y1="788.80792"
+       x2="1063.7142"
+       y2="850.07648" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -464,9 +517,9 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="373.5927"
-     inkscape:cy="198.66393"
+     inkscape:zoom="0.5"
+     inkscape:cx="882.15912"
+     inkscape:cy="411.47193"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -475,7 +528,7 @@
      showguides="true"
      inkscape:guide-bbox="true"
      inkscape:window-width="1440"
-     inkscape:window-height="846"
+     inkscape:window-height="788"
      inkscape:window-x="0"
      inkscape:window-y="27">
     <inkscape:grid
@@ -623,21 +676,6 @@
        x="625.71423"
        y="-459.07648"
        transform="scale(1,-1)" />
-    <rect
-       y="278.07648"
-       x="1147.7142"
-       height="480"
-       width="39.999996"
-       id="rect6941"
-       style="opacity:1;fill:url(#linearGradient8610);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-    <rect
-       style="opacity:1;fill:url(#linearGradient8614);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       id="rect8612"
-       width="39.999996"
-       height="480"
-       x="-945.71429"
-       y="278.07648"
-       transform="scale(-1,1)" />
     <g
        id="g8659"
        transform="matrix(1,0,0,1.2,194,-55.615297)"
@@ -682,12 +720,15 @@
     <text
        sodipodi:linespacing="100%"
        id="text8709"
-       y="471.68204"
+       y="180.68204"
        x="661.88861"
        style="font-size:37.42930603px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient9004);fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Sans;-inkscape-font-specification:Sans"
-       xml:space="preserve"><tspan
+       xml:space="preserve"
+       inkscape:export-filename="/home/kalle/devel/subterranean/data/title/logo.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          style="font-size:37.42930603px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient9004);fill-opacity:1;font-family:MgOpen Cosmetica;-inkscape-font-specification:MgOpen Cosmetica"
-         y="471.68204"
+         y="180.68204"
          x="661.88861"
          id="tspan8711"
          sodipodi:role="line">Subterranean</tspan></text>
@@ -723,6 +764,51 @@
              y="428.00665"
              style="font-size:86.82971954px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:url(#radialGradient9017);fill-opacity:1;font-family:Monotype Sorts;-inkscape-font-specification:Monotype Sorts">b</tspan></text>
       </g>
+    </g>
+    <rect
+       y="278.07648"
+       x="1345.7142"
+       height="480"
+       width="640"
+       id="rect8504"
+       style="opacity:1;fill:url(#linearGradient7048);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       inkscape:export-filename="/home/kalle/devel/subterranean/data/title/darkness.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       transform="translate(1035.7858,-651.14285)"
+       id="g7149"
+       inkscape:label="Layer 1">
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/home/kalle/devel/subterranean/data/title/elevator.png"
+         ry="0"
+         rx="0"
+         y="537.2193"
+         x="-126.07143"
+         height="295"
+         width="275"
+         id="rect7057"
+         style="opacity:1;fill:url(#linearGradient8021);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/home/kalle/devel/subterranean/data/title/elevator.png"
+         sodipodi:nodetypes="ccccc"
+         id="rect7146"
+         d="M -126.07136,537.21933 L 148.92848,537.21933 L 118.92848,518.21933 L -96.071363,518.21933 L -126.07136,537.21933 z"
+         style="fill:url(#linearGradient8023);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/home/kalle/devel/subterranean/data/title/elevator.png"
+         y="537.2193"
+         x="-126.07137"
+         height="288.99988"
+         width="274.99994"
+         id="rect8116"
+         style="opacity:0.30769234;fill:url(#linearGradient8025);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
     </g>
   </g>
 </svg>
