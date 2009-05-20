@@ -31,10 +31,32 @@ class Room(level.Room):
                     """You look kind of big for a dwarf...""",[None,
                     """grumpyman:I'm big boned, so what!?""",
                     ],'first'))
+            if 'worms' in self.info:
+                opts.append((
+                    """Did you really eat that worm?""",[None,
+                    """grumpyman:Yup. T'was delicious too!""",
+                    ],'first'))
             opts.append((
-                    """Uh, never mind...""",[None,]
+                    """I've got lots to do. So... See ya!""",[None,]
                     ,'exit'))
         return opts
+
+    def look_grumpyman(self):
+        self.script([
+            """player:Wow, that's a big dwarf!"""
+            ])
+    
+    def worm_grumpyman(self):
+        self.lost('worm')
+        self.info.append('worm')
+        self.script([
+            """grumpyman:Oh thank ye, 'tis my favourite!"""
+            ])
+    def rock_grumpyman(self):
+        self.lost('rock')
+        self.script([
+            """grumpyman:Ouch! Why'd you throw that at me, you asshole!?"""
+        ])
 
     def use_rock(self):
         self.player.walkpos('rock',self._use_rock)
