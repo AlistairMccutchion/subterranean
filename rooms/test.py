@@ -13,9 +13,14 @@ class Room(level.Room):
         self.got('potion')
         self.got('key')
         self.got('worm')
+    
+    def use_sign(self):
+        self.player.walkpos('sign',self._use_sign)
 
+    def _use_sign(self):
         self.script([
-            """player:Tab = Inventory,  RightMouse = Examine item"""
+            """player:Hmm, let's see what it says.""",
+            """player:Tab = Inventory, RightMouse = Examine"""
             ])
     def use_grumpyman(self):
         self.player.walkpos('grumpyman',self._use_grumpyman)
