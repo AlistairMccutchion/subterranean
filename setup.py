@@ -8,6 +8,7 @@ import sys
 import glob
 import os
 import shutil
+import pygame
 
 
 data = [
@@ -69,6 +70,11 @@ MODULE_EXCLUDES =[
 'compiler',
 'pydoc']
 
+includes =[
+'pygame',
+'pygame.mixer.sound'
+]
+
 cmd = sys.argv[1]
 
 if cmd in ('sdist'):
@@ -99,6 +105,7 @@ if cmd in ('py2exe',):
 #            'bundle_files': 1,
             'ignores': ['tcl','AppKit','Numeric','Foundation'],
             'excludes': MODULE_EXCLUDES,
+            'includes': includes,
             }},
         windows=[{
             'script':'main.py',

@@ -37,7 +37,8 @@ class Room(level.Room):
         self.objs['rockhole'] = self.rockhole
         self.data['rockplaced'] = 1
         self.game.data['rockplaced'] = 1
-        #KALLE: Både för rummets och hela spelets vetskap.
+        #KALLE: self.data applies to this room, self.game.data to the entire
+        # game.
 
     def use_sewer(self):
         self.player.walkto('sewer_pos',self._use_sewer)
