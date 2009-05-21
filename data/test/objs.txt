@@ -6,3 +6,5 @@ sign_pos	point	300	200	100
 dropzone	dropzone	120	260	100
 grumpyman	grumpyman	550	300	100
 grumpyman_pos	point	450	300	100
+exit_pos	point	550	400	100
+exit	exit	550	400	100

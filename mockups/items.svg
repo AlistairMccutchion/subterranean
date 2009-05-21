@@ -23,6 +23,65 @@
   <defs
      id="defs9007">
     <linearGradient
+       id="linearGradient4812">
+      <stop
+         style="stop-color:#f8eded;stop-opacity:0.4375;"
+         offset="0"
+         id="stop4814" />
+      <stop
+         style="stop-color:#edb037;stop-opacity:0;"
+         offset="1"
+         id="stop4816" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4791">
+      <stop
+         style="stop-color:#eec82f;stop-opacity:0.85714287;"
+         offset="0"
+         id="stop4793" />
+      <stop
+         id="stop4799"
+         offset="0.5"
+         style="stop-color:#ef8e23;stop-opacity:0.8839286;" />
+      <stop
+         style="stop-color:#ff1300;stop-opacity:0.85714287;"
+         offset="1"
+         id="stop4795" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4770">
+      <stop
+         style="stop-color:#e63f3c;stop-opacity:1;"
+         offset="0"
+         id="stop4772" />
+      <stop
+         style="stop-color:#c62326;stop-opacity:1;"
+         offset="1"
+         id="stop4774" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4757">
+      <stop
+         style="stop-color:#e5362f;stop-opacity:1;"
+         offset="0"
+         id="stop4759" />
+      <stop
+         style="stop-color:#530707;stop-opacity:1;"
+         offset="1"
+         id="stop4761" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3350">
+      <stop
+         style="stop-color:#ca362e;stop-opacity:1;"
+         offset="0"
+         id="stop3352" />
+      <stop
+         style="stop-color:#b93113;stop-opacity:1;"
+         offset="1"
+         id="stop3354" />
+    </linearGradient>
+    <linearGradient
        inkscape:collect="always"
        id="linearGradient7561">
       <stop
@@ -1070,6 +1129,155 @@
        y1="42.875"
        x2="228.375"
        y2="60.0625" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3350"
+       id="linearGradient3356"
+       x1="316"
+       y1="49.427728"
+       x2="339.75603"
+       y2="49.427728"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3350"
+       id="linearGradient3374"
+       x1="365.125"
+       y1="60.881119"
+       x2="369"
+       y2="41.065559"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.9640344,0,0,0.9755502,-30.5355,2.1967134)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient7468"
+       id="linearGradient2590"
+       gradientUnits="userSpaceOnUse"
+       x1="211.0625"
+       y1="47"
+       x2="210.5625"
+       y2="52.815048" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient7456"
+       id="radialGradient2592"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.0000002,3.4249e-8,-1.1231955e-8,0.3650695,0.342033,33.718333)"
+       cx="225.32138"
+       cy="47.578079"
+       fx="225.32138"
+       fy="47.578079"
+       r="15.5625" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient7476"
+       id="radialGradient2594"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(6.6070906e-3,0.4584742,-1.6003741,2.306305e-2,305.741,-51.535508)"
+       cx="227.07001"
+       cy="51.154461"
+       fx="227.07001"
+       fy="51.154461"
+       r="15.597029" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient7438"
+       id="linearGradient2596"
+       gradientUnits="userSpaceOnUse"
+       x1="226.49998"
+       y1="42.875"
+       x2="228.375"
+       y2="60.0625" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient7468"
+       id="linearGradient3960"
+       gradientUnits="userSpaceOnUse"
+       x1="211.0625"
+       y1="47"
+       x2="210.5625"
+       y2="52.815048" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient7456"
+       id="radialGradient3962"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.0000002,3.4249e-8,-1.1231955e-8,0.3650695,0.342033,33.718333)"
+       cx="225.32138"
+       cy="47.578079"
+       fx="225.32138"
+       fy="47.578079"
+       r="15.5625" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient7476"
+       id="radialGradient3964"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(6.6070906e-3,0.4584742,-1.6003741,2.306305e-2,305.741,-51.535508)"
+       cx="227.07001"
+       cy="51.154461"
+       fx="227.07001"
+       fy="51.154461"
+       r="15.597029" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient7438"
+       id="linearGradient3966"
+       gradientUnits="userSpaceOnUse"
+       x1="226.49998"
+       y1="42.875"
+       x2="228.375"
+       y2="60.0625" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4757"
+       id="linearGradient4763"
+       x1="368.51767"
+       y1="50.750011"
+       x2="369.69547"
+       y2="62.611042"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.0843097,0,-5.2787179)" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4770"
+       id="radialGradient4778"
+       cx="368"
+       cy="50.364487"
+       fx="368"
+       fy="50.364487"
+       r="15.625"
+       gradientTransform="matrix(1,0,0,0.226897,0,39.290487)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4791"
+       id="linearGradient4797"
+       x1="366.96985"
+       y1="34.062511"
+       x2="367.30356"
+       y2="53.562511"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(1.375,-0.125)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4791"
+       id="linearGradient4808"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.9683961,0,0,0.8829778,13.241405,6.0957853)"
+       x1="366.96985"
+       y1="34.062511"
+       x2="367.30356"
+       y2="53.562511" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4812"
+       id="linearGradient4818"
+       x1="367.8674"
+       y1="52.644611"
+       x2="368.22705"
+       y2="43.269611"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -1081,18 +1289,18 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="246.68618"
-     inkscape:cy="252.81482"
+     inkscape:zoom="4.0000001"
+     inkscape:cx="365.69944"
+     inkscape:cy="403.17253"
      inkscape:document-units="px"
-     inkscape:current-layer="g7198"
+     inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:snap-bbox="true"
      inkscape:snap-nodes="false"
      inkscape:window-width="1440"
-     inkscape:window-height="846"
+     inkscape:window-height="827"
      inkscape:window-x="0"
-     inkscape:window-y="27">
+     inkscape:window-y="25">
     <inkscape:grid
        type="xygrid"
        id="grid9035"
@@ -1379,5 +1587,113 @@
     <g
        id="g7198"
        transform="translate(0,165.46299)" />
+    <path
+       style="fill:url(#linearGradient3374);fill-opacity:1;fill-rule:evenodd;stroke:#a0281e;stroke-width:0.96977526px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 308.08159,60.485839 C 308.08159,60.485839 330.97741,66.339139 335.31555,41.950386 L 333.38749,40.48706 C 333.38749,40.48706 323.02413,57.559188 307.84058,58.534738 L 307.59957,58.778626 L 308.08159,60.485839 z"
+       id="path3358"
+       inkscape:export-filename="/home/nevon/workspace/subterranean/data/inv/chili.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+    <path
+       style="fill:#ae7b20;fill-opacity:1;fill-rule:evenodd;stroke:#8e681e;stroke-width:0.36135039;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 333.01278,40.385326 C 333.01278,40.385326 335.72979,35.801963 335.3118,32.364441 L 336.77482,32.650901 C 336.77482,32.650901 334.82978,39.854979 335.66578,41.8602 L 335.5208,42.390547 L 333.01278,40.385326 z"
+       id="path3376"
+       sodipodi:nodetypes="cccccc"
+       inkscape:export-filename="/home/nevon/workspace/subterranean/data/inv/chili.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+    <path
+       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#b91711;stroke-width:0.67884254;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 333.99035,41.82505 C 333.99035,41.82505 327.08839,61.053731 309.10921,59.587867"
+       id="path3386"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72"
+       inkscape:export-filename="/home/nevon/workspace/subterranean/data/inv/chili.png" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="liquid 2">
+    <path
+       style="fill:url(#radialGradient4778);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 352.37499,50.104921 C 352.37499,50.104921 366.93749,43.370864 383.62499,50.31319 C 383.62499,50.31319 373.56249,59.338214 352.37499,50.104921 z"
+       id="path4768"
+       inkscape:export-filename="/home/nevon/workspace/subterranean/data/inv/icons/firepotion.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="liquid"
+     style="display:inline">
+    <path
+       style="fill:url(#linearGradient4763);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 352.56249,49.750011 C 352.56249,49.750011 369.31249,57.814563 383.74999,49.953319 C 383.74999,49.953319 384.49999,55.442636 382.43749,58.831104 C 380.37499,62.219571 364.62499,65.201423 354.87499,59.034412 C 354.87499,59.034412 351.62499,52.054169 352.56249,49.750011 z"
+       id="path4755"
+       inkscape:export-filename="/home/nevon/workspace/subterranean/data/inv/icons/firepotion.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer6"
+     inkscape:label="fire"
+     style="display:inline">
+    <path
+       style="fill:url(#linearGradient4797);fill-opacity:1;fill-rule:evenodd;stroke:#d93924;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 369.81249,52.937511 C 369.81249,52.937511 377.18749,52.937511 376.43749,45.937511 C 375.68749,38.937511 373.24999,40.250011 375.99999,36.375011 C 375.99999,36.375011 371.68749,37.125011 370.93749,43.187511 C 370.93749,43.187511 367.37499,39.750011 368.87499,34.437511 C 368.87499,34.437511 362.93749,41.562511 365.81249,45.375011 C 365.81249,45.375011 360.74999,47.812511 362.74999,40.937511 C 362.74999,40.937511 351.68749,52.500011 369.81249,52.937511 z"
+       id="path4781"
+       inkscape:export-filename="/home/nevon/workspace/subterranean/data/inv/icons/firepotion.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer7"
+     inkscape:label="fire inside"
+     style="display:inline">
+    <path
+       style="fill:url(#linearGradient4818);fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+       d="M 361.18749,45.062511 C 361.18749,45.062511 358.24999,49.750011 364.06249,51.437511 C 369.87499,53.125011 374.43749,50.312511 374.43749,50.312511 C 374.43749,50.312511 376.68749,47.250011 373.87499,41.687511 C 373.87499,41.687511 371.68749,43.375011 371.37499,46.562511 C 371.37499,46.562511 368.43749,45.125011 368.06249,42.125011 C 368.06249,42.125011 366.24999,44.812511 367.12499,47.062511 C 367.12499,47.062511 361.37499,48.812511 361.18749,45.062511 z"
+       id="path4810"
+       inkscape:export-filename="/home/nevon/workspace/subterranean/data/inv/icons/firepotion.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="glass"
+     style="opacity:0.15340909">
+    <path
+       style="fill:#c1bebe;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 360.28082,33.084404 C 360.28082,33.084404 367.71832,28.396904 377.59332,33.021904 L 376.65582,38.709404 C 376.65582,38.709404 388.21832,43.084404 382.84332,58.959403 C 382.84332,58.959403 370.59332,66.334403 355.40582,59.146903 C 355.40582,59.146903 346.03082,45.396904 361.40582,38.396904 L 360.28082,33.084404 z"
+       id="path4752"
+       inkscape:export-filename="/home/nevon/workspace/subterranean/data/inv/icons/firepotion.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="fiery drink"
+     style="display:inline">
+    <path
+       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#9a8d8d;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 359.56379,33.462079 C 369.34437,39.638045 376.9224,34.057094 377.04323,34.054909 L 376.35757,39.118933 C 388.90872,45.129341 382.48042,59.221539 382.48042,59.221539 C 377.94443,62.000484 373.0339,62.78564 368.8135,62.756982 C 360.91871,62.703375 354.99793,59.197878 354.99793,59.280359 C 346.15909,44.254341 361.15478,38.76538 361.15478,38.76538 L 359.56379,33.462079 C 359.54428,33.590715 367.82603,28.431117 377.24146,33.285302 L 377.11646,34.128132 L 376.78251,34.492409"
+       id="path4739"
+       sodipodi:nodetypes="ccccscccccc"
+       inkscape:export-filename="/home/nevon/workspace/subterranean/data/inv/icons/firepotion.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+    <path
+       sodipodi:nodetypes="ccccscccccc"
+       id="path4749"
+       d="M 360.59914,34.022 C 370.11467,29.667243 375.94071,33.27447 376.01477,34.770488 L 375.24093,39.56253 C 387.11797,45.250126 381.59743,58.647948 381.59743,58.647948 C 377.30507,61.27764 372.65827,62.020625 368.66454,61.993508 C 361.19376,61.94278 355.591,58.625558 355.591,58.70361 C 347.22688,44.484623 362.29217,39.165466 362.29217,39.165466 L 360.78664,33.9595 C 360.76815,34.081227 367.35511,29.073745 376.26485,33.667216 L 376.02157,34.902279 L 376.20554,35.246992"
+       style="opacity:0.14772727;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#e6d8d8;stroke-width:0.94629114999999997px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="/home/nevon/workspace/subterranean/data/inv/icons/firepotion.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
   </g>
 </svg>

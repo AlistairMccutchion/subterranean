@@ -13,7 +13,7 @@ class Room(level.Room):
         self.player = self.objs['player']
         for o in self.objs.values():
             if 'del_%s'%o.name in self.data: del self.objs[o.name]
-        if self.value not in ('title',None):
+        if self.value not in ('title','test',None):
             pos = self.objs['%s_pos'%self.value].pos
             self.player.rect.centerx,self.player.rect.bottom = pos
 
@@ -63,9 +63,9 @@ class Room(level.Room):
 
     def _use_exit(self):
         self.script([
-            """END OF DEMO""",
+            """You sure you want to go back to the testing area? Ok then.""",
             ])
-        #self.goto('mainst')
+        self.goto('test')
 
     def use_sewerend(self):
         self.player.walkto('sewerend_pos',self._use_sewerend)

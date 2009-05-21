@@ -28,6 +28,13 @@ class Room(level.Room):
     def _use_grumpyman(self):
         self.say("""grumpyman:Whatcha lookin' at?""")
         self.talkto(self.talk_grumpyman,'first')
+
+    def foodtalk(self):
+        if 'food' not in self.info:
+            self.info.append('food')
+    def givechili(self):
+        if 'chili' not in self.inv:
+            self.got('chili')
     
     def talk_grumpyman(self,topic):
         opts = []
@@ -36,14 +43,22 @@ class Room(level.Room):
                     """You look kind of big for a dwarf...""",[None,
                     """grumpyman:I'm big boned, so what!?""",
                     ],'first'))
-            if 'worm' in self.info:
+            if 'worm' in self.info and 'food' not in self.info:
                 opts.append((
                     """Did you really eat that worm?""",[None,
                     """grumpyman:Yup. T'was delicious too!""",
+                    (self.foodtalk,)
                     ],'first'))
+            if 'food' in self.game.data['info'] and 'worm' not in self.inv and 'chili' not in self.inv:
+                opts.append((
+                            """Is there anything you won't eat?""",[None,
+                            """grumpyman:Argh! There be but one thing...""",
+                            """grumpyman:This blasted chili fruit! Here, you can have it!""",
+                            (self.givechili,)
+                            ],'first'))
             opts.append((
-                    """I've got lots to do. So... See ya!""",[None,]
-                    ,'exit'))
+                """I've got lots to do. So... See ya!""",[None,]
+                ,'exit'))
         return opts
 
     def look_grumpyman(self):
@@ -61,7 +76,29 @@ class Room(level.Room):
         self.lost('rock')
         self.script([
             """grumpyman:Ouch! Why'd you throw that at me, you asshole!?"""
+            ])
+
+    def examine_chili(self):
+        self.script([
+            """player:That chili fruit looks really hot!""",
+            """player:...and not in the good sense of the word."""
         ])
+
+    def chili_grumpyman(self):
+        self.script([
+            """grumpyman:Oh no! That be much too spicy for ol' me!"""
+        ])
+
+    def chili_dropzone(self):
+        self.lost('chili')
+        self.script([
+            """I'm surprised it didn't catch on fire."""
+            ])
+
+    def chili_player(self):
+        self.script([
+            """player:That's way too hot for me!"""
+            ])
 
     def use_rock(self):
         self.player.walkpos('rock',self._use_rock)
@@ -130,3 +167,17 @@ class Room(level.Room):
         self.script([
             """player:Eat... a .. worm? Are you stupid?"""
             ])
+    
+    def chili_potion(self):
+        self.script([
+            """Whoa! It caught on fire!""",
+            """Sweet, it's a fire potion!"""
+            ])
+        self.lost('chili')
+        self.lost('potion')
+        self.got('firepotion')
+
+    def use_exit(self):
+        self.player.walkto('exit_pos',self._use_exit)
+    def _use_exit(self):
+        self.goto('sewer')
