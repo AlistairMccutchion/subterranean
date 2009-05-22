@@ -72,7 +72,7 @@ MODULE_EXCLUDES =[
 
 includes =[
 'pygame',
-'pygame.mixer.sound'
+#'pygame.mixer.sound'
 ]
 
 cmd = sys.argv[1]
@@ -102,7 +102,7 @@ if cmd in ('py2exe',):
             'compressed': 1,
 # bundle_files throws a .dll error. Would otherwise reduce clutter
 # and lower filesize.
-#            'bundle_files': 1,
+            'bundle_files': 2,
             'ignores': ['tcl','AppKit','Numeric','Foundation'],
             'excludes': MODULE_EXCLUDES,
             'includes': includes,

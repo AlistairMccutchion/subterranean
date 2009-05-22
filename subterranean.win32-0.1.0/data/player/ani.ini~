@@ -1,0 +1,84 @@
+[default]
+speed = 1
+frames = 1
+0 = s1.png
+
+[walk_n]
+speed = 6
+frames = 1
+0 = n1.png
+
+[stand_n]
+speed = 6
+frames = 1
+0 = n1.png
+
+[walk_s]
+speed = 6
+frames = 1
+0 = s1.png
+
+[stand_s]
+speed = 6
+frames = 1
+0 = s1.png
+
+[walk_e]
+speed = 6
+frames = 1
+0 = e1.png
+
+[stand_e]
+speed = 6
+frames = 1
+0 = e1.png
+
+[walk_w]
+speed = 6
+frames = 1
+0 = w1.png
+
+[stand_w]
+speed = 6
+frames = 1
+0 = w1.png
+
+[walk_nw]
+speed = 6
+frames = 1
+0 = nw1.png
+
+[stand_nw]
+speed = 6
+frames = 1
+0 = nw1.png
+
+[walk_sw]
+speed = 6
+frames = 1
+0 = sw1.png
+
+[stand_sw]
+speed = 6
+frames = 1
+0 = sw1.png
+
+[walk_ne]
+speed = 6
+frames = 1
+0 = ne1.png
+
+[stand_ne]
+speed = 6
+frames = 1
+0 = ne1.png
+
+[walk_se]
+speed = 6
+frames = 1
+0 = se1.png
+
+[stand_se]
+speed = 6
+frames = 1
+0 = se1.png

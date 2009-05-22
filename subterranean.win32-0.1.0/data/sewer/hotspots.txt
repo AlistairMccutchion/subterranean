@@ -1,0 +1,2 @@
+#f00	exit
+#0f0	sewerend

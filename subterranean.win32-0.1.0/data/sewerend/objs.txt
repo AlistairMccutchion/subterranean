@@ -1,0 +1,6 @@
+player	player	20	230	60
+sewer_pos	point	10	235	100
+hole	point32	360	152	100
+hole_pos	point	335	170	100
+rockhole	rock	360	155	100
+
