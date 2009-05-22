@@ -695,7 +695,9 @@ class Level:
     def event(self,e):
         self._e = e
         if e.type is KEYDOWN:
-            if e.scancode == 23:
+            #Tommy: Use e.key == 9 instead of e.scancode == 23. The latter
+            # doesn't work in Windows.
+            if e.key == 9:
                 if(self.showinventory):
                     self.showinventory = False
                 else:
