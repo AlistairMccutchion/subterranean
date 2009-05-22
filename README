@@ -5,3 +5,6 @@ CREDITS:
 Subterranean is a fork of the game engine used by "Colonel Wiljafjord and 
 the Tarbukas Tyranny" [http://www.pyweek.org/e/toba3/], which was created 
 by Phil Hassey / The Olde Battleaxe [http://www.imitationpickles.org/]
+
+Thanks to Devin Watson [http://www.moviepartners.com/blog/] for helping
+with py2exe.
