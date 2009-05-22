@@ -980,7 +980,17 @@ class Talk(engine.State):
             self.init()
             if script[0] == None: script[0] = text
             return Script(self.game,self.room,script,self)
-
+        
+        #Tommy: Chooses dialog option using 1-9 buttons. Does not work with
+        # the numpad.
+        if e.type is KEYDOWN:
+            if 48 < e.key < 58:
+                n = e.key-49
+                text,script,topic = self.opts[n]
+                self.topic = topic
+                self.init()
+                if script[0] == None: script[0] = text
+                return Script(self.game,self.room,script,self)
             
 
 if __name__ == '__main__':
