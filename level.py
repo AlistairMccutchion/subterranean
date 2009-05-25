@@ -866,7 +866,8 @@ class Level:
     def got(self,item):
         if item not in self.inv:
             self.inv.append(item)
-        #KALLE: Gör så att items hamnar direkt i inventoryt istället
+        #KALLE: Makes items go straight to the inventory, instead of having to
+        # place them there manually.
         #self.item = item
         
     def lost(self,item):
@@ -899,6 +900,7 @@ class Script(engine.State):
     def __init__(self,game,room,script,next):
         self.game,self.room,self.next = game,room,next
         self.script = []
+        self.nextline = 0
         for line in script:
             if type(line) == str:
                 self.script.append((self.room.say,line,))
@@ -922,8 +924,12 @@ class Script(engine.State):
         params = todo[1:]
         r = fnc(*params)
         #print fnc,params,r
-        if r != False:
+        #Tommy: Ugly hack to skip a single line if the mouse is clicked. Check
+        # the method "event" to see where self.nextline comes from.
+        #TODO: Make the last line of the conversation be skipped as well.
+        if r != False or self.nextline == 1:
             self.script.pop(0)
+            self.nextline = 0
         r = self.room.loop()
         return r
         
@@ -938,6 +944,8 @@ class Script(engine.State):
     def event(self,e):
         if e.type is KEYDOWN and e.key is K_SPACE:
             self.skip = 1
+        elif e.type is MOUSEBUTTONDOWN:
+            self.nextline = 1
 
 
 class Talk(engine.State):
