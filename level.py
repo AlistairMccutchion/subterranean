@@ -773,6 +773,8 @@ class Level:
     def event_inv(self,e):
         #KALLE: Notering: Släpp/lägg tillbaka utanför inventoryt
         if e.type is MOUSEBUTTONDOWN and self.item != None:
+            #TODO: Check if mouse is hover over another item and if so, use
+            #self.item with that item.
             b1,b2,b3 = pygame.mouse.get_pressed()
             if b1 == 1:
                 print "Used",self.item
@@ -903,7 +905,7 @@ class Script(engine.State):
                 self.script.append((self.room.wait,))
             else:
                 self.script.append(line)
-        self.skip = 0 
+        self.skip = 0
         
     def loop(self):
         if not self.skip: return self._loop()
@@ -934,7 +936,7 @@ class Script(engine.State):
         self.paint(screen)
         
     def event(self,e):
-        if e.type is KEYDOWN:
+        if e.type is KEYDOWN and e.key is K_ESCAPE:
             self.skip = 1
 
 
