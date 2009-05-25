@@ -936,7 +936,7 @@ class Script(engine.State):
         self.paint(screen)
         
     def event(self,e):
-        if e.type is KEYDOWN and e.key is K_ESCAPE:
+        if e.type is KEYDOWN and e.key is K_SPACE:
             self.skip = 1
 
 
