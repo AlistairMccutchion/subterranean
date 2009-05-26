@@ -39,10 +39,13 @@ class Obj:
         self.load()
         
     def loop(self):
+        #KALLE: Not setting state to "stand" if standing still every loop
         if len(self.path):
-            self.state = 'walk'
-        else:
-            self.state = 'stand'
+            self.state = "walk"
+        if not len(self.path) and self.state == "walk":
+            self.state = "stand"
+
+
             
 #         if self.state == 'stand':
 #             for o in self.level.objs.values():
@@ -55,9 +58,9 @@ class Obj:
             
         if self.facing == None:
             if self.rect.centerx < (self.level.bkgr.get_width()/2):
-                self.facing = 'right'
+                self.facing = 'e'
             else:
-                self.facing = 'left'
+                self.facing = 'w'
 
         #KALLE: Alla väderstreck!
         #KALLE: _rect > rect == E/N
@@ -86,9 +89,11 @@ class Obj:
 
         cls = '%s_%s'%(self.state,self.facing)
         if cls not in self.data:
+            print cls
             cls = 'default'
         if cls in self.data:
             r = self.data[cls]
+            print r
 
             #KALLE: Lade till self._scale för att skapa ned bilden
             self.image = self._scale(r[self.frame%r['frames']])

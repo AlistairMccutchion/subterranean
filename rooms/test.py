@@ -9,10 +9,14 @@ class Room(level.Room):
         level.Level.init(self)
         
         self.player = self.objs['player']
+        self.grumpyman = self.objs['grumpyman']
+
 
         self.got('potion')
         self.got('key')
         self.got('worm')
+
+        self.grumpyman.state = "talk"
     
     def use_sign(self):
         self.player.walkpos('sign',self._use_sign)
