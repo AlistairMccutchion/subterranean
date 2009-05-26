@@ -900,14 +900,14 @@ class Script(engine.State):
     def __init__(self,game,room,script,next):
         self.game,self.room,self.next = game,room,next
         self.script = []
-        self.nextline = 0
+        self.nextline = False
         for line in script:
             if type(line) == str:
                 self.script.append((self.room.say,line,))
                 self.script.append((self.room.wait,))
             else:
                 self.script.append(line)
-        self.skip = 0
+        self.skip = False
         
     def loop(self):
         if not self.skip: return self._loop()
@@ -927,9 +927,9 @@ class Script(engine.State):
         #Tommy: Ugly hack to skip a single line if the mouse is clicked. Check
         # the method "event" to see where self.nextline comes from.
         #TODO: Make the last line of the conversation be skipped as well.
-        if r != False or self.nextline == 1:
+        if r != False or self.nextline == True:
             self.script.pop(0)
-            self.nextline = 0
+            self.nextline = False
         r = self.room.loop()
         return r
         
@@ -943,9 +943,9 @@ class Script(engine.State):
         
     def event(self,e):
         if e.type is KEYDOWN and e.key is K_SPACE:
-            self.skip = 1
+            self.skip = True
         elif e.type is MOUSEBUTTONDOWN:
-            self.nextline = 1
+            self.nextline = True
 
 
 class Talk(engine.State):
