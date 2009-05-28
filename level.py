@@ -726,7 +726,7 @@ class Level:
     def event_normal(self,e):
         if e.type is MOUSEBUTTONDOWN and self.showinventory == False:
             b1,b2,b3 = pygame.mouse.get_pressed()
-            if b1 == 1:
+            if b1:
                 for hover in self.find(e.pos):
                     if hover: #use_ action
                         fnc = 'use_%s'%hover
@@ -738,7 +738,7 @@ class Level:
                 self.player.walkto(e.pos)
 
             #KALLE: Högerklick kallar objekt_look istället för att alla musknappar var objekt_use som innan.
-            elif b3 == 1:
+            elif b3:
                 for hover in self.find(e.pos):
                     if hover: #look_ action
                         fnc = 'look_%s'%hover
@@ -752,11 +752,11 @@ class Level:
         if e.type is MOUSEBUTTONDOWN and self.showinventory == True:
             self.item = self.find_inventory_item(e)
             b1,b2,b3 = pygame.mouse.get_pressed()
-            if b1 == 1:
+            if b1:
                 self.sfx('get')
                 self.mode = 'inv'
                 #self.showinventory = False
-            elif b3 == 1:
+            elif b3:
                 #TODO: Show text nicer somehow. Also, make examine_foo not room-dependent!
                 fnc = 'examine_%s'%self.item
                 #KALLE: Vi vill inte dra runt objektet!
@@ -765,8 +765,17 @@ class Level:
                     r = getattr(self,fnc)()
                     if r != False: return r
 
+    def inside_inventory(self):
+        #KALLE: Some kind of weird bug. Possibly a 64bits pygame bug from what google told me
+        try:
+            return self._e.pos[0] > 77 and self._e.pos[0] < 501 and self._e.pos[1] > 48 and self._e.pos[1] < 342
+        except AttributeError:
+            print "FIXME: Can't open inventory for you. Sorry."
+            return False
+
     def find_inventory_item(self,e):
-        if self._e.pos[0] > 77 and self._e.pos[0] < 501 and self._e.pos[1] > 48 and self._e.pos[1] < 342:
+
+        if self.inside_inventory():
 
             #KALLE: Lägg på marginalen 50 från skärmens övre kant
             row = (self._e.pos[1]-50)/INV_H
@@ -782,35 +791,44 @@ class Level:
     
 
     def event_inv(self,e):
+
+        #KALLE: Notering: Dölj inventoryt när man för musen utanför och håller en item i handen
+        if self.showinventory and self.item and self.inside_inventory() == False:
+            self.showinventory = False
+            return
+
         #KALLE: Notering: Släpp/lägg tillbaka utanför inventoryt
         if e.type is MOUSEBUTTONDOWN and self.item != None:
+            b1,b2,b3 = pygame.mouse.get_pressed()
             #TODO: Check if mouse is hover over another item and if so, use
             #self.item with that item.
             if self.showinventory:
-                combine_item_a = self.item
-                combine_item_b = self.find_inventory_item(e)
-                if combine_item_b != self.item and combine_item_b != None:
-                    fnc = 'combine_%s_%s'%(combine_item_a,combine_item_b)
-                    print fnc
-                    if hasattr(self,fnc):
-                        r = getattr(self,fnc)()
-                        if r != False: return r
+                if b1:
+                    combine_item_a = self.item
+                    combine_item_b = self.find_inventory_item(e)
+                    if combine_item_b != self.item and combine_item_b != None:
+                        fnc = 'combine_%s_%s'%(combine_item_a,combine_item_b)
+                        print fnc
+                        if hasattr(self,fnc):
+                            r = getattr(self,fnc)()
+                            if r != False: return r
+                elif b3:
+                    print "Put back ",self.item,"in inventory"
+                    self.item = None
+                    return
             else:
-                b1,b2,b3 = pygame.mouse.get_pressed()
-                if b1 == 1:
+                if b1:
                     for hover in self.find(e.pos):
                         fnc = '%s_%s'%(self.item,hover)
                         if hasattr(self,fnc):
                             r = getattr(self,fnc)()
-                            print r
                             if r != False: return r
                     return
-                elif b3 == 1:
+                elif b3:
                     print "Put back ",self.item,"in inventory"
                     self.item = None
                     self.showinventory = False
-
-                
+                    return                
 
         #KALLE: Notering: flytta items i inventoryt
         if e.type is MOUSEBUTTONDOWN and e.pos[1] > 400:
