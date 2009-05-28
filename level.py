@@ -89,11 +89,9 @@ class Obj:
 
         cls = '%s_%s'%(self.state,self.facing)
         if cls not in self.data:
-            print cls
             cls = 'default'
         if cls in self.data:
             r = self.data[cls]
-            print r
 
             #KALLE: Lade till self._scale för att skapa ned bilden
             self.image = self._scale(r[self.frame%r['frames']])
@@ -200,9 +198,9 @@ class Obj:
         o = self.level.objs[pos]
         self._rect = None
         if self.rect.centerx < o.rect.centerx:
-            self.facing = 'right'
+            self.facing = 'e'
         else:
-            self.facing = 'left'
+            self.facing = 'w'
     
     def walkpos(self,pos,fnc=None):
         if fnc == None: fnc = self.blank
@@ -213,6 +211,9 @@ class Obj:
         
         
     def _say(self,msg):
+        print self.name
+        self.state = 'talk_%s'%(self.facing)
+        print self.state
         self.text = msg
         self.text_timer = max(FPS/2,len(msg)*FPS/15) #20 CPS reading...
         
@@ -748,8 +749,24 @@ class Level:
             return
 
         #KALLE: Notering: Klicka i inventoryt och får en item i "handen". Stäng inventoryt
-        if e.type is MOUSEBUTTONDOWN and self.showinventory == True and self._e.pos[0] > 77 and self._e.pos[0] < 501 and self._e.pos[1] > 48 and self._e.pos[1] < 342:
+        if e.type is MOUSEBUTTONDOWN and self.showinventory == True:
+            self.item = self.find_inventory_item(e)
             b1,b2,b3 = pygame.mouse.get_pressed()
+            if b1 == 1:
+                self.sfx('get')
+                self.mode = 'inv'
+                #self.showinventory = False
+            elif b3 == 1:
+                #TODO: Show text nicer somehow. Also, make examine_foo not room-dependent!
+                fnc = 'examine_%s'%self.item
+                #KALLE: Vi vill inte dra runt objektet!
+                self.item = None
+                if hasattr(self,fnc):
+                    r = getattr(self,fnc)()
+                    if r != False: return r
+
+    def find_inventory_item(self,e):
+        if self._e.pos[0] > 77 and self._e.pos[0] < 501 and self._e.pos[1] > 48 and self._e.pos[1] < 342:
 
             #KALLE: Lägg på marginalen 50 från skärmens övre kant
             row = (self._e.pos[1]-50)/INV_H
@@ -761,41 +778,39 @@ class Level:
 
             #KALLE: Fulhack för att vi inte vill ha mer än 4 (0-3) rader.
             if n < len(self.game.data['inv']) and row < 4:
-                self.item = self.game.data['inv'][n]
-                if b1 == 1:
-                    self.sfx('get')
-                    self.mode = 'inv'
-                    self.showinventory = False
-                elif b3 == 1:
-                    #TODO: Show text nicer somehow. Also, make examine_foo not room-dependent!
-                    fnc = 'examine_%s'%self.item
-                    #KALLE: Vi vill inte dra runt objektet!
-                    self.item = None
-                    if hasattr(self,fnc):
-                        r = getattr(self,fnc)()
-                        if r != False: return r
+                return self.game.data['inv'][n]
+    
 
     def event_inv(self,e):
         #KALLE: Notering: Släpp/lägg tillbaka utanför inventoryt
         if e.type is MOUSEBUTTONDOWN and self.item != None:
             #TODO: Check if mouse is hover over another item and if so, use
             #self.item with that item.
-            b1,b2,b3 = pygame.mouse.get_pressed()
-            if b1 == 1:
-                print "Used",self.item
-                for hover in self.find(e.pos):
-                    fnc = '%s_%s'%(self.item,hover)
+            if self.showinventory:
+                combine_item_a = self.item
+                combine_item_b = self.find_inventory_item(e)
+                if combine_item_b != self.item and combine_item_b != None:
+                    fnc = 'combine_%s_%s'%(combine_item_a,combine_item_b)
+                    print fnc
                     if hasattr(self,fnc):
                         r = getattr(self,fnc)()
-                        print r
                         if r != False: return r
-                return
-            elif b3 == 1:
-                print "Put back ",self.item,"in inventory"
-                self.item = None
-                self.showinventory = False
+            else:
+                b1,b2,b3 = pygame.mouse.get_pressed()
+                if b1 == 1:
+                    for hover in self.find(e.pos):
+                        fnc = '%s_%s'%(self.item,hover)
+                        if hasattr(self,fnc):
+                            r = getattr(self,fnc)()
+                            print r
+                            if r != False: return r
+                    return
+                elif b3 == 1:
+                    print "Put back ",self.item,"in inventory"
+                    self.item = None
+                    self.showinventory = False
 
-            
+                
 
         #KALLE: Notering: flytta items i inventoryt
         if e.type is MOUSEBUTTONDOWN and e.pos[1] > 400:

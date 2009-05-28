@@ -16,7 +16,6 @@ class Room(level.Room):
         self.got('key')
         self.got('worm')
 
-        self.grumpyman.state = "talk"
     
     def use_sign(self):
         self.player.walkpos('sign',self._use_sign)
@@ -172,7 +171,7 @@ class Room(level.Room):
             """player:Eat... a .. worm? Are you stupid?"""
             ])
     
-    def chili_potion(self):
+    def combine_chili_potion(self):
         self.script([
             """Whoa! It caught on fire!""",
             """Sweet, it's a fire potion!"""
