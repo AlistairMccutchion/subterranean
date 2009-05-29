@@ -1,5 +1,6 @@
 #coding: -utf-8-
 import level
+import random
 
 class Room(level.Room):
     def __init__(self,game,value):
@@ -63,6 +64,13 @@ class Room(level.Room):
                 """I've got lots to do. So... See ya!""",[None,]
                 ,'exit'))
         return opts
+
+    def use_default(self):
+        responses = ["That didn't work.","Hmm... No.","Not working.","I'm not sure how I can do that.","Nah."]
+        random.shuffle(responses)
+        self.script([
+            "player:"+responses[1]
+            ])
 
     def look_grumpyman(self):
         self.script([
@@ -172,13 +180,13 @@ class Room(level.Room):
             ])
     
     def combine_chili_potion(self):
+        self.lost('chili')
+        self.lost('potion')
+        self.got('firepotion')
         self.script([
             """Whoa! It caught on fire!""",
             """Sweet, it's a fire potion!"""
             ])
-        self.lost('chili')
-        self.lost('potion')
-        self.got('firepotion')
 
     def use_exit(self):
         self.player.walkto('exit_pos',self._use_exit)

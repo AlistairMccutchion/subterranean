@@ -733,6 +733,7 @@ class Level:
                         if hasattr(self,fnc):
                             r = getattr(self,fnc)()
                             if r != False: return r
+
                     
                 #self.walkto(self.player,e.pos)
                 self.player.walkto(e.pos)
@@ -820,9 +821,12 @@ class Level:
                 if b1:
                     for hover in self.find(e.pos):
                         fnc = '%s_%s'%(self.item,hover)
+                        print fnc
                         if hasattr(self,fnc):
                             r = getattr(self,fnc)()
                             if r != False: return r
+                        else:
+                            return getattr(self,"use_default")()
                     return
                 elif b3:
                     print "Put back ",self.item,"in inventory"
