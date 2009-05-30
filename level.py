@@ -592,6 +592,7 @@ class Level:
 
         for o in self.objs.values():
             if o.text_timer:
+                #print o.name,o.state,o.facing
                 o.text_timer -= 1
                 if o.text_timer <= 0:
                     o.text = None
@@ -737,7 +738,7 @@ class Level:
             #KALLE: Högerklick kallar objekt_look istället för att alla musknappar var objekt_use som innan.
             elif b3:
                 for hover in self.find(e.pos):
-                    if hover: #look_ action
+                    if hover:
                         fnc = 'look_%s'%hover
                         if hasattr(self,fnc):
                             r = getattr(self,fnc)()
@@ -828,7 +829,7 @@ class Level:
                     return                
 
         #KALLE: Notering: flytta items i inventoryt
-        if e.type is MOUSEBUTTONDOWN and e.pos[1] > 400:
+        if e.type is MOUSEBUTTONDOWN and self.inside_inventory():
             #self.game.data['inv'].append(self.item)
             item = self.item
             self.item = None
@@ -836,6 +837,7 @@ class Level:
                 self.inv.remove(item)
             self.inv.append(item)
             self.sfx('get')
+            self.showinventory = True
             return
         
     def event_play(self,e):

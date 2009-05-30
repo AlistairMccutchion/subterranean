@@ -32,7 +32,7 @@ class Room(level.Room):
         self.player.walkpos('grumpyman',self._use_grumpyman)
 
     def _use_grumpyman(self):
-        self.say("""grumpyman:Whatcha lookin' at?""")
+        #self.say("""grumpyman:Whatcha lookin' at?""")
         self.talkto(self.talk_grumpyman,'first')
 
     def foodtalk(self):
@@ -123,6 +123,7 @@ class Room(level.Room):
         self.got('rock')
 
     def look_rock(self):
+        self.player.face("rock")
         self.script([
             """player:It's a rock."""
             ])
