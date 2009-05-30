@@ -15,6 +15,7 @@ class Obj:
     def __init__(self,l,name,src,pos,scale=100):
         self.level = l
         self.name = name
+        self.talking = False
         self.src = src
         self.rect = pygame.Rect(0,0,1,1)
         self.rect.centerx, self.rect.bottom = pos
@@ -42,10 +43,10 @@ class Obj:
         #KALLE: Not setting state to "stand" if standing still every loop
         if len(self.path):
             self.state = "walk"
-        if not len(self.path) and self.state == "walk":
+        elif not len(self.path) and self.talking:
+            self.state = "talk"
+        else:
             self.state = "stand"
-
-
             
 #         if self.state == 'stand':
 #             for o in self.level.objs.values():
@@ -57,10 +58,7 @@ class Obj:
             
             
         if self.facing == None:
-            if self.rect.centerx < (self.level.bkgr.get_width()/2):
-                self.facing = 'e'
-            else:
-                self.facing = 'w'
+            self.facing = 'e'
 
         #KALLE: Alla väderstreck!
         #KALLE: _rect > rect == E/N
@@ -211,9 +209,6 @@ class Obj:
         
         
     def _say(self,msg):
-        print self.name
-        self.state = 'talk_%s'%(self.facing)
-        print self.state
         self.text = msg
         self.text_timer = max(FPS/2,len(msg)*FPS/15) #20 CPS reading...
         
@@ -600,6 +595,7 @@ class Level:
                 o.text_timer -= 1
                 if o.text_timer <= 0:
                     o.text = None
+                    o.talking = False
 
             if len(o.path):
                 tx,ty = o.path.pop(0)
@@ -745,7 +741,6 @@ class Level:
                         fnc = 'look_%s'%hover
                         if hasattr(self,fnc):
                             r = getattr(self,fnc)()
-                            print r
                             if r != False: return r
             return
 
@@ -809,7 +804,6 @@ class Level:
                     combine_item_b = self.find_inventory_item(e)
                     if combine_item_b != self.item and combine_item_b != None:
                         fnc = 'combine_%s_%s'%(combine_item_a,combine_item_b)
-                        print fnc
                         if hasattr(self,fnc):
                             r = getattr(self,fnc)()
                             if r != False: return r
@@ -821,7 +815,6 @@ class Level:
                 if b1:
                     for hover in self.find(e.pos):
                         fnc = '%s_%s'%(self.item,hover)
-                        print fnc
                         if hasattr(self,fnc):
                             r = getattr(self,fnc)()
                             if r != False: return r
@@ -897,6 +890,7 @@ class Level:
         for o in self.objs.values():
             o.text = None
             o.text_timer = 0
+        self.objs[name].talking = True
         self.objs[name]._say(text)
         
     def script(self,script):

@@ -17,6 +17,8 @@ class Room(level.Room):
         self.got('key')
         self.got('worm')
 
+
+
     
     def use_sign(self):
         self.player.walkpos('sign',self._use_sign)
@@ -76,6 +78,7 @@ class Room(level.Room):
         self.script([
             """player:Wow, that's a big dwarf!"""
             ])
+
     
     def worm_grumpyman(self):
         self.lost('worm')
