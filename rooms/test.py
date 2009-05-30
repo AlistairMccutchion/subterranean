@@ -12,22 +12,44 @@ class Room(level.Room):
         self.player = self.objs['player']
         self.grumpyman = self.objs['grumpyman']
 
+        self.objs["bulbleft"].state = "r"
+        self.objs["bulbmiddle"].state = "r"
+        self.objs["bulbright"].state = "r"
 
         self.got('potion')
-        self.got('key')
         self.got('worm')
 
+    def checkbulbs(self):
+        return self.objs["bulbleft"].state == "b" and self.objs["bulbmiddle"].state == "o" and self.objs["bulbright"].state == "b"
 
+    def togglebulb(self,bulb):
+        if "puzzle_complete_bulbs" not in self.info:
+            #print "toggling",bulb
+            #hacky, I know. It was very late :)
+            if self.objs[bulb].state == "r": self.objs[bulb].state = "y"
+            elif self.objs[bulb].state == "y": self.objs[bulb].state = "o"
+            elif self.objs[bulb].state == "o": self.objs[bulb].state = "g"
+            elif self.objs[bulb].state == "g": self.objs[bulb].state = "b"
+            elif self.objs[bulb].state == "b": self.objs[bulb].state = "r"
 
-    
+            if self.checkbulbs() and "puzzle_got_clue" in self.info:
+                self.info.append("puzzle_complete_bulbs")
+                self.script([
+                    """player: Now I get it! Blue Orange Blue! BOB!""",
+                    """grumpyman: Well done, laddie. Even I couldn't figure that one out. Here, take this silver key!"""
+                    ])
+                self.got('key')
+
     def use_sign(self):
         self.player.walkpos('sign',self._use_sign)
 
     def _use_sign(self):
         self.script([
-            """player:Hmm, let's see what it says.""",
-            """player:Tab = Inventory, RightMouse = Examine"""
+            """sign: BOB was here!"""
+            #"""player: Hmm... Why is BOB written in uppercase?""",
             ])
+        self.info.append("puzzle_got_clue")
+
     def use_grumpyman(self):
         self.player.walkpos('grumpyman',self._use_grumpyman)
 
@@ -49,6 +71,21 @@ class Room(level.Room):
                     """You look kind of big for a dwarf...""",[None,
                     """grumpyman:I'm big boned, so what!?""",
                     ],'first'))
+            if 'puzzle_complete_bulbs' not in self.info:
+                opts.append((
+                        """What are those bulbs for?""",[None,
+                        """grumpyman:It's a puzzle. I'm not able to solve it myself. Solve it for me and get a prize!""",
+                        ],'first'))
+            if 'puzzle_complete_bulbs' in self.info:
+                opts.append((
+                        """I figured out the puzzle!""",[None,
+                        """grumpyman:Yes, you already told me that. Go play somewhere else!""",
+                        ],'first'))
+            if 'puzzle_got_clue' in self.info:
+                opts.append((
+                        """Do you know who this BOB guy is?""",[None,
+                        """grumpyman:Nope, I haven't been able to figure that out.""",
+                        ],'first'))
             if 'worm' in self.info and 'food' not in self.info:
                 opts.append((
                     """Did you really eat that worm?""",[None,
@@ -180,7 +217,7 @@ class Room(level.Room):
 
     def worm_player(self):
         self.script([
-            """player:Eat... a .. worm? Are you stupid?"""
+            """player:Eat... a ... worm? Are you stupid?"""
             ])
     
     def combine_chili_potion(self):
@@ -190,6 +227,30 @@ class Room(level.Room):
         self.script([
             """Whoa! It caught on fire!""",
             """Sweet, it's a fire potion!"""
+            ])
+
+    def use_bulbleft(self):
+        self.togglebulb("bulbleft")
+
+    def use_bulbmiddle(self):
+        self.togglebulb("bulbmiddle")
+
+    def use_bulbright(self):
+        self.togglebulb("bulbright")
+
+    def look_bulbleft(self):
+        self.script([
+            """player:It's a light bulb."""
+            ])
+
+    def look_bulbmiddle(self):
+        self.script([
+            """player:It's a light bulb."""
+            ])
+
+    def look_bulbright(self):
+        self.script([
+            """player:It's a light bulb."""
             ])
 
     def use_exit(self):

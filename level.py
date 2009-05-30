@@ -41,13 +41,24 @@ class Obj:
         
     def loop(self):
         #KALLE: Not setting state to "stand" if standing still every loop
-        if len(self.path):
-            self.state = "walk"
-        elif not len(self.path) and self.talking:
+        #Special case for player (need to fix for NPCS as well. self.can_walk ?)
+        #All this need to go somewhere else!
+
+        #For the player
+        if self.name == "player":
+            if len(self.path):
+                self.state = "walk"
+            elif not len(self.path) and self.talking:
+                self.state = "talk"
+            else:
+                self.state = "stand"
+
+        #For talking characters
+        if self.talking and self.state != "talk":
             self.state = "talk"
-        else:
-            self.state = "stand"
-            
+        if not self.talking and self.state == "talk":
+            self.state = "default"
+        
 #         if self.state == 'stand':
 #             for o in self.level.objs.values():
 #                 if o != self and o.text != None and o.text_timer > 0:
@@ -57,10 +68,7 @@ class Obj:
 #                         self.facing = 'left'
             
             
-        if self.facing == None:
-            self.facing = 'e'
-
-        #KALLE: Alla väderstreck!
+        #KALLE: All directions!
         #KALLE: _rect > rect == E/N
         #KALLE: _rect < rect == W/S
             
@@ -82,14 +90,23 @@ class Obj:
             elif self._rect.x > self.rect.x and self._rect.y < self.rect.y:
                 self.facing = 'sw'
 
-            #KALLE: Sätt scale om den är ändrad. (Galen matematik, behöver rumsspecifika grejer här.)
-            self.scale = math.ceil((self.rect.y + 181)/3.7)
+            #KALLE: Sätt scale om den är ändrad.
+            #(Galen matematik, behöver rumsspecifika grejer här. Det är ju dessutom bara spelaren som ska skalas!)
+            if self.name == "player":
+                self.scale = math.ceil((self.rect.y + 181)/3.7)
 
-        cls = '%s_%s'%(self.state,self.facing)
+        if self.facing != None:
+            cls = '%s_%s'%(self.state,self.facing)
+        else:
+            cls = '%s'%(self.state)
         if cls not in self.data:
             cls = 'default'
         if cls in self.data:
             r = self.data[cls]
+
+            #KALLE: For debugging puzzle states
+            #if self.name != "player":
+            #    print self.state
 
             #KALLE: Lade till self._scale för att skapa ned bilden
             self.image = self._scale(r[self.frame%r['frames']])

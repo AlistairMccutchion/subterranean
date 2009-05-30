@@ -2,6 +2,9 @@ player	player	130	254	60
 rock	rock	420	260	100
 rock_pos	point	420	260	100
 sign	sign	300	150	100
+bulbleft	bulb	75	350	100
+bulbmiddle	bulb	100	350	100
+bulbright	bulb	125	350	100
 sign_pos	point	300	200	100
 dropzone	dropzone	120	260	100
 grumpyman	grumpyman	550	300	100
