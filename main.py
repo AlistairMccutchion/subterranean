@@ -44,7 +44,7 @@ class Game(engine.Game):
         self.timer = timer.Timer(FPS)
         
         pygame.font.init()
-        self.font = pygame.font.Font(os.path.join('data','freesansbold.ttf'),20)
+        self.font = pygame.font.Font(os.path.join('data','freesansbold.ttf'),18)
         #self.font = pygame.font.Font(pygame.font.get_default_font(),20)
         
         try:

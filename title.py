@@ -12,7 +12,7 @@ class Title(engine.State):
         self.game = game
         
     def init(self):
-        self.game.music('default')
+        #self.game.music('default')
         self.bkgr = pygame.image.load(os.path.join("data","title","title.png")).convert()
         self.elevator = pygame.image.load(os.path.join("data","title","elevator.png")).convert_alpha()
         self.darkness = pygame.image.load(os.path.join("data","title","darkness.png")).convert_alpha()

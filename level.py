@@ -990,7 +990,7 @@ class Script(engine.State):
         
     def paint(self,screen):
         self.room.paint_main(screen)
-        screen.fill((0,0,0),(0,400,640,80))
+        screen.fill((0,0,0),(0,480,640,0))
         pygame.display.flip()
         
     def update(self,screen):
@@ -1018,16 +1018,20 @@ class Talk(engine.State):
 
     def paint(self,screen):
         self.room.paint_main(screen)
-        screen.fill((0,0,0),(0,400,640,80))
+        #screen.fill((0,0,0),(0,400,640,80))
         fnt = self.game.font
         pos = pygame.mouse.get_pos()
         hover = (pos[1]-400) / 20
         n = 0
-        x,y = 0,400
-        for text in self.opts:
-            c = (0xaa,0xaa,0xaa)
+        x,y = 10,400
+        for text in self.opts: 
+            c = (178,175,126)
+            c_shadow = (118,115,66)
             if n == hover:
-                c = (0xff,0xff,0xff)
+                c = (222,100,58)
+                c_shadow = (162,40,8)
+            #KALLE: Add a nice shadow
+            screen.blit(fnt.render(text[0],1,c_shadow),(x+1,y+1))
             img = fnt.render(text[0],1,c)
             screen.blit(img,(x,y))
             y += 20
@@ -1038,6 +1042,7 @@ class Talk(engine.State):
         self.paint(screen)
         
     def event(self,e):
+        #KALLE: Dialog alternatives
         if e.type is MOUSEBUTTONDOWN:
             n = (e.pos[1]-400) / 20
             if n < 0 or n >= len(self.opts): return
