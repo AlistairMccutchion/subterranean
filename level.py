@@ -982,9 +982,20 @@ class Script(engine.State):
         #Tommy: Ugly hack to skip a single line if the mouse is clicked. Check
         # the method "event" to see where self.nextline comes from.
         #TODO: Make the last line of the conversation be skipped as well.
-        if r != False or self.nextline == True:
+
+        if r != False:
             self.script.pop(0)
+
+        if self.nextline == True and len(self.script) != 0:
+            #KALLE: Make everyone stop talking
+            for obj in self.room.objs.values():
+                if obj.talking:
+                    obj.talking = False
+                    obj.text = None
+                    obj.text_timer = 0
             self.nextline = False
+            self.script.pop(0)
+
         r = self.room.loop()
         return r
         
