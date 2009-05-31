@@ -8,7 +8,7 @@ class Room(level.Room):
     
     def init(self):
         level.Level.init(self)
-        
+
         self.player = self.objs['player']
         self.grumpyman = self.objs['grumpyman']
 
