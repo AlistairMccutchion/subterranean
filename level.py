@@ -16,6 +16,7 @@ class Obj:
         self.level = l
         self.name = name
         self.talking = False
+        self.looping = None
         self.src = src
         self.rect = pygame.Rect(0,0,1,1)
         self.rect.centerx, self.rect.bottom = pos
@@ -36,6 +37,7 @@ class Obj:
         self.scale = scale
         self.images = []
         self._rect = None
+        self.can_walk = True
         
         self.load()
         
@@ -50,7 +52,7 @@ class Obj:
                 self.state = "walk"
             elif not len(self.path) and self.talking:
                 self.state = "talk"
-            else:
+            elif self.state == "":
                 self.state = "stand"
 
         #For talking characters
@@ -109,12 +111,21 @@ class Obj:
             #    print self.state
 
             #KALLE: Lade till self._scale för att skapa ned bilden
+            if self.looping == None and 'loop' in self.data[cls].keys() and self.data[cls]['loop'] == 1:
+                self.looping = True
+            else:
+                self.looping = False
+
+            #print r[self.frame%r['frames']]
             self.image = self._scale(r[self.frame%r['frames']])
+            if not self.looping and self.frame%r['frames'] == r['frames']-1:
+                r['speed'] = 0
+
             #self.image = r[self.frame%r['frames']]
             
-            if (self.level.frame%r['speed']) == 0:
+            if r['speed'] != 0 and self.level.frame%r['speed'] == 0:
                 self.frame += 1
-                
+
         self._rect = pygame.Rect(self.rect)
                 
     def _scale(self,img):
@@ -140,7 +151,7 @@ class Obj:
                         key = int(k)
                     except:
                         pass
-                    if k in ('speed','frames'):
+                    if k in ('speed','frames','loop'):
                         self.data[sect][key] = cfg.getint(sect,k)
                     else:
                         try:
@@ -201,28 +212,31 @@ class Obj:
         self._rect = None
         
     def walkto(self,pos,_path_stop = None):
-        if not self.level.showinventory:
-            self.level._walkto(self,pos,_path_stop)
+        if self.can_walk:
+            if not self.level.showinventory:
+                self.level._walkto(self,pos,_path_stop)
         
         
     def blank(self):
         pass
     
     def face(self,pos):
-        if not pos in self.level.objs: return
-        o = self.level.objs[pos]
-        self._rect = None
-        if self.rect.centerx < o.rect.centerx:
-            self.facing = 'e'
-        else:
-            self.facing = 'w'
+        if self.can_walk:
+            if not pos in self.level.objs: return
+            o = self.level.objs[pos]
+            self._rect = None
+            if self.rect.centerx < o.rect.centerx:
+                self.facing = 'e'
+            else:
+                self.facing = 'w'
     
     def walkpos(self,pos,fnc=None):
-        if fnc == None: fnc = self.blank
-        def myfnc():
-            self.face(pos)
-            fnc()
-        self.level._walkto(self,'%s_pos'%pos,myfnc)
+        if self.can_walk:
+            if fnc == None: fnc = self.blank
+            def myfnc():
+                self.face(pos)
+                fnc()
+            self.level._walkto(self,'%s_pos'%pos,myfnc)
         
         
     def _say(self,msg):
@@ -337,9 +351,13 @@ class Level:
             import traceback; traceback.print_exc()
         
     def load(self):
-        bkgr = self.bkgr = pygame.image.load(os.path.join('data',self.src,'bkgr.jpg')).convert()
+        #KALLE: Support for PNG backgrounds, which we want to use instead.
+        try:
+            bkgr = self.bkgr = pygame.image.load(os.path.join('data',self.src,'bkgr.jpg')).convert()
+        except pygame.error:
+                bkgr = self.bkgr = pygame.image.load(os.path.join('data',self.src,'bkgr.png')).convert()
         self.i_layers = pygame.image.load(os.path.join('data',self.src,'layers.png')).convert()
-        self.i_walkable = pygame.image.load(os.path.join('data',self.src,'walkable.png')).convert()
+        self.i_walkable = pygame.image.load(os.path.join('data',self.src,'walkable.png')).convert_alpha()
         self.i_hotspots = pygame.image.load(os.path.join('data',self.src,'hotspots.png')).convert()
         
         self.layers = {}
@@ -981,7 +999,6 @@ class Script(engine.State):
         #print fnc,params,r
         #Tommy: Ugly hack to skip a single line if the mouse is clicked. Check
         # the method "event" to see where self.nextline comes from.
-        #TODO: Make the last line of the conversation be skipped as well.
 
         if r != False:
             self.script.pop(0)
