@@ -16,7 +16,6 @@ class Obj:
         self.level = l
         self.name = name
         self.talking = False
-        self.looping = None
         self.src = src
         self.rect = pygame.Rect(0,0,1,1)
         self.rect.centerx, self.rect.bottom = pos
@@ -52,6 +51,8 @@ class Obj:
                 self.state = "walk"
             elif not len(self.path) and self.talking:
                 self.state = "talk"
+            elif not len(self.path) and not self.talking:
+                self.state = "stand"
             elif self.state == "":
                 self.state = "stand"
 
@@ -94,8 +95,8 @@ class Obj:
 
             #KALLE: Sätt scale om den är ändrad.
             #(Galen matematik, behöver rumsspecifika grejer här. Det är ju dessutom bara spelaren som ska skalas!)
-            if self.name == "player":
-                self.scale = math.ceil((self.rect.y + 181)/3.7)
+            #if self.name == "player":
+             #   self.scale = math.ceil((self.rect.y + 181)/3.7)
 
         if self.facing != None:
             cls = '%s_%s'%(self.state,self.facing)
@@ -110,18 +111,17 @@ class Obj:
             #if self.name != "player":
             #    print self.state
 
-            #KALLE: Lade till self._scale för att skapa ned bilden
-            if self.looping == None and 'loop' in self.data[cls].keys() and self.data[cls]['loop'] == 1:
-                self.looping = True
+            if 'loop' in self.data[cls].keys() and self.data[cls]['loop'] == 0:
+                looping = False
             else:
-                self.looping = False
+                looping = True
+                self.done = False
 
-            #print r[self.frame%r['frames']]
             self.image = self._scale(r[self.frame%r['frames']])
-            if not self.looping and self.frame%r['frames'] == r['frames']-1:
-                r['speed'] = 0
+            if not looping and self.frame%r['frames'] == r['frames']-1:
+                self.state = "default"
+                self.done = True
 
-            #self.image = r[self.frame%r['frames']]
             
             if r['speed'] != 0 and self.level.frame%r['speed'] == 0:
                 self.frame += 1

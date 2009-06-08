@@ -29,22 +29,6 @@ class Title(engine.State):
         screen.fill((0,0,0),(0,0,SW,SH))
         screen.blit(self.logo,(195,200))
         pygame.display.flip()
-        #Kalle: Old intro for reference
-        '''
-        #KALLE: Me dont understand... :)
-        f = self.frame
-        n = FPS*3
-        i = f-FPS*3
-        y = SW*i/(FPS*1)
-        if i > int(FPS*4.5) and f%5 == 0:
-            screen.fill((0,0,0),(0,0,SW,485))
-        else:
-            screen.blit(self.bkgr,(0,0))
-            screen.blit(self.elevator,(286,y))
-            screen.blit(self.darkness,(0,0))
-            screen.blit(self.logo,(25,175))
-        pygame.display.flip()
-        '''
         
     def event(self,e):
         if e.type is KEYDOWN:
@@ -53,7 +37,7 @@ class Title(engine.State):
     def loop(self):
         self.frame += 1
         
-        if self.frame > (FPS/2):
+        if self.frame > (FPS):
             return self.next
 
         

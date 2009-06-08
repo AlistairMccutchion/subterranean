@@ -19,6 +19,15 @@ class Room(level.Room):
         self.got('potion')
         self.got('worm')
 
+        #self.player.can_walk = False
+        self.player.state = "omg"
+
+        '''
+        self.script([
+            """grumpyman:You can't leave until you've shown me your progress on the Elderstein project!"""
+            ])
+        '''
+
     def checkbulbs(self):
         return self.objs["bulbleft"].state == "b" and self.objs["bulbmiddle"].state == "o" and self.objs["bulbright"].state == "b"
 
@@ -40,15 +49,26 @@ class Room(level.Room):
                     ])
                 self.got('key')
 
-    def use_sign(self):
-        self.player.walkpos('sign',self._use_sign)
-
-    def _use_sign(self):
+    def look_note1(self):
+        self.player.face("note1")
         self.script([
-            """sign: BOB was here!"""
+            """note1: BOB was here!"""
             #"""player: Hmm... Why is BOB written in uppercase?""",
             ])
         self.info.append("puzzle_got_clue")
+
+    def look_note2(self):
+        self.player.face("note2")
+        self.script([
+            """note2: Don't forget mum.""",
+            """player: Oh oh..."""
+            ])
+
+    def look_note3(self):
+        self.player.face("note3")
+        self.script([
+            """note3: If you're reading this you're doing it WRONG!"""
+            ])
 
     def use_grumpyman(self):
         self.player.walkpos('grumpyman',self._use_grumpyman)
@@ -186,24 +206,36 @@ class Room(level.Room):
             ])
 
     def key_dropzone(self):
+        self.player.walkpos('dropzone',self._key_dropzone)
+
+    def _key_dropzone(self):
         self.lost('key')
         self.script([
             """player:I dropped the key in the zone. Bye bye."""
             ])
 
     def worm_dropzone(self):
+        self.player.walkpos('dropzone',self._worm_dropzone)
+
+    def _worm_dropzone(self):
         self.lost('worm')
         self.script([
             """player:There goes the worm. Bye little fellow!"""
             ])
 
     def rock_dropzone(self):
+        self.player.walkpos('dropzone',self._rock_dropzone)
+
+    def _rock_dropzone(self):
         self.lost('rock')
         self.script([
             """player:I'm glad to be rid of this goddamn rock."""
             ])
 
     def potion_dropzone(self):
+        self.player.walkpos('dropzone',self._potion_dropzone)
+
+    def _potion_dropzone(self):
         self.lost('potion')
         self.script([
             """player:Now the dropzone gains 500 hp. Neat."""
@@ -252,8 +284,14 @@ class Room(level.Room):
         self.script([
             """player:It's a light bulb."""
             ])
-
+    '''
     def use_exit(self):
-        self.player.walkto('exit_pos',self._use_exit)
+        if "can_leave" in self.info:
+            self.player.walkpos('exit',self._use_exit)
+        else:
+            self.script([
+            """player:No can do."""
+            ])
     def _use_exit(self):
-        self.goto('sewer')
+        self.goto('test')
+    '''
