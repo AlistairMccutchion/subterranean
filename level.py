@@ -356,9 +356,9 @@ class Level:
             bkgr = self.bkgr = pygame.image.load(os.path.join('data',self.src,'bkgr.jpg')).convert()
         except pygame.error:
                 bkgr = self.bkgr = pygame.image.load(os.path.join('data',self.src,'bkgr.png')).convert()
-        self.i_layers = pygame.image.load(os.path.join('data',self.src,'layers.png')).convert()
+        self.i_layers = pygame.image.load(os.path.join('data',self.src,'layers.png')).convert_alpha()
         self.i_walkable = pygame.image.load(os.path.join('data',self.src,'walkable.png')).convert_alpha()
-        self.i_hotspots = pygame.image.load(os.path.join('data',self.src,'hotspots.png')).convert()
+        self.i_hotspots = pygame.image.load(os.path.join('data',self.src,'hotspots.png')).convert_alpha()
         
         self.layers = {}
         iw = self.i_walkable
@@ -473,6 +473,7 @@ class Level:
         getattr(self,'paint_%s'%self.mode)(screen)
         
     def paint_main(self,screen):
+        self.game.draw_cursor()
         if hasattr(self,'player'):
             self.follow(self.player)
         
@@ -492,7 +493,7 @@ class Level:
             pos = pos[0]-self.view.x,pos[1]-self.view.y
             screen.blit(img,pos)
             #screen.fill((255,255,255),(pos[0],z,4,4))
-            
+
         for o in self.objs.values():
             if o.text != None:
                 #lines = o.text.split('\n')
@@ -528,7 +529,9 @@ class Level:
                     img = fnt.render(line,1,(255,255,255))
                     screen.blit(img,(x,y))
                     y += h
-                
+
+        self.game.draw_cursor()
+
     def paint_edit(self,screen):
         self.paint_main(screen)
         
@@ -564,6 +567,8 @@ class Level:
                     screen.blit(img,(x,y))
                 
                 n += 1
+
+        self.game.draw_cursor()
             
         
     def paint_normal(self,screen):
@@ -584,7 +589,7 @@ class Level:
             x,y = pygame.mouse.get_pos()
             x,y = x-img.get_width()/2,y-img.get_height()/2
             screen.blit(img,(x,y))
-            
+
         pygame.display.flip()        
         
     def update(self,screen):
@@ -740,13 +745,10 @@ class Level:
                     self.showinventory = False
                 else:
                     self.showinventory = True
-                
 
         if e.type is MOUSEMOTION:
-            e = pygame.event.Event(e.type,{
-                'pos':(e.pos[0]+self.view.x,e.pos[1]+self.view.y),
-                'buttons':e.buttons,
-                })
+            self.set_mouse_cursor(e.pos)
+
         if e.type is MOUSEBUTTONDOWN:
             e = pygame.event.Event(e.type,{
                 'pos':(e.pos[0]+self.view.x,e.pos[1]+self.view.y),
@@ -754,6 +756,32 @@ class Level:
                 })
 
         getattr(self,'event_%s'%self.mode)(e)
+
+    def set_mouse_cursor(self,pos):
+        hover = self.find(pos)
+        x,y = pos
+
+        self.game.currentmousepos = (x,y)
+        if len(hover) != 0:
+            #KALLE: TODO: Sort out what to do if there are multiple objects (shouldn't happen really)
+            #KALLE: Currently gets the closest one, which is kinda what we want anyway. (if X is blocking Y, it gets X)
+            if "exit_" in hover[0]:
+                if "north" in hover[0]:
+                    self.game.currentcursor = "exit_north"
+                elif "south" in hover[0]:
+                    self.game.currentcursor = "exit_south"
+                elif "east" in hover[0]:
+                    self.game.currentcursor = "exit_east"
+                elif "west" in hover[0]:
+                    self.game.currentcursor = "exit_west"
+            elif "npc_" in hover[0]:
+                self.game.currentcursor = "talk"
+            elif len(hover) == 1 and (hover[0] == "player" or "_pos" in hover[0]):
+                self.game.currentcursor = "default"
+            else:
+                self.game.currentcursor = "use"
+        else:
+            self.game.currentcursor = "default"
                 
     def event_normal(self,e):
         if e.type is MOUSEBUTTONDOWN and self.showinventory == False:
@@ -762,6 +790,7 @@ class Level:
                 for hover in self.find(e.pos):
                     if hover: #use_ action
                         fnc = 'use_%s'%hover
+                        print fnc
                         if hasattr(self,fnc):
                             r = getattr(self,fnc)()
                             if r != False: return r
@@ -1045,6 +1074,7 @@ class Talk(engine.State):
             return self.next
 
     def paint(self,screen):
+        self.game.currentcursor = "default"
         self.room.paint_main(screen)
         #screen.fill((0,0,0),(0,400,640,80))
         fnt = self.game.font

@@ -37,7 +37,19 @@ class Game(engine.Game):
             v |= FULLSCREEN
         self.screen = pygame.display.set_mode((SW,SH),v)
         pygame.display.set_caption('Subterranean')
-        
+
+        self.cursors = {}
+        self.cursors["default"] = pygame.image.load(os.path.join("data","default","cursor_default.png")).convert_alpha()
+        self.cursors["use"] = pygame.image.load(os.path.join("data","default","cursor_use.png")).convert_alpha()
+        self.cursors["exit_north"] = pygame.image.load(os.path.join("data","default","cursor_exit_north.png")).convert_alpha()
+        self.cursors["exit_south"] = pygame.image.load(os.path.join("data","default","cursor_exit_south.png")).convert_alpha()
+        self.cursors["exit_east"] = pygame.image.load(os.path.join("data","default","cursor_exit_east.png")).convert_alpha()
+        self.cursors["exit_west"] = pygame.image.load(os.path.join("data","default","cursor_exit_west.png")).convert_alpha()
+        self.cursors["talk"] = pygame.image.load(os.path.join("data","default","cursor_talk.png")).convert_alpha()
+        self.currentcursor = "default"
+        self.currentmousepos = (0,0)
+        pygame.mouse.set_visible(False)
+
         if (v&FULLSCREEN)!=0:
             pygame.time.wait(2000)
         
@@ -68,6 +80,13 @@ class Game(engine.Game):
             
         self._sfx = {}
         self._music = None
+
+    def draw_cursor(self):
+
+        x = pygame.mouse.get_pos()[0]-12
+        y = pygame.mouse.get_pos()[1]-12
+
+        self.screen.blit(self.cursors[self.currentcursor],(x,y))
         
     def sfx(self,name,loops=0):
         if not pygame.mixer.get_init(): return

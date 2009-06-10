@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   sodipodi:docname="cursors.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs4">
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6272"
+       id="linearGradient6278"
+       x1="25.857265"
+       y1="28.830357"
+       x2="21.311033"
+       y2="35.915176"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.1243437,0,0,0.9784829,-7.1552799,-0.1129681)" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient6295">
+      <stop
+         style="stop-color:#c6bc62;stop-opacity:1"
+         offset="0"
+         id="stop6297" />
+      <stop
+         style="stop-color:#6d683d;stop-opacity:1"
+         offset="1"
+         id="stop6299" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient6272">
+      <stop
+         style="stop-color:#d0c77a;stop-opacity:1;"
+         offset="0"
+         id="stop6274" />
+      <stop
+         style="stop-color:#d0c77a;stop-opacity:0;"
+         offset="1"
+         id="stop6276" />
+    </linearGradient>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6272"
+       id="linearGradient6293"
+       gradientUnits="userSpaceOnUse"
+       x1="22.187805"
+       y1="25.580439"
+       x2="22.187805"
+       y2="37.065979"
+       gradientTransform="matrix(1.0826271,0,0,1.0256671,1.4788797,-2.788506)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6295"
+       id="linearGradient6301"
+       x1="21"
+       y1="25.362183"
+       x2="29"
+       y2="39.362183"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.9999999,0,0,0.9545455,3.5000022,2.5619129)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6295"
+       id="linearGradient6329"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.9999999,0,0,0.9545455,30.500002,1.5619133)"
+       x1="21"
+       y1="25.362183"
+       x2="29"
+       y2="39.362183" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6272"
+       id="linearGradient6338"
+       gradientUnits="userSpaceOnUse"
+       x1="25.857265"
+       y1="28.830357"
+       x2="21.311033"
+       y2="35.915176" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6295"
+       id="linearGradient5518"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.9999999,0,0,0.9545455,-36.499998,2.5619129)"
+       x1="21"
+       y1="25.362183"
+       x2="29"
+       y2="39.362183" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="5.6568542"
+     inkscape:cx="141.03542"
+     inkscape:cy="1008.3752"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     showguides="false"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1280"
+     inkscape:window-height="753"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:snap-bbox="true"
+     inkscape:snap-nodes="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid5482"
+       visible="true"
+       enabled="true" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="38.448931,1017.9686"
+       id="guide6331" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:url(#linearGradient5518);fill-opacity:1;fill-rule:evenodd;stroke:#847e4a;stroke-width:1.00000012px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M -15.5,24.862182 L -15.5,45.862183 C -13.02974,40.625709 -9.926149,36.371621 -3.5,37.271274 L -15.5,24.862182 z"
+       id="path5484"
+       sodipodi:nodetypes="cccc" />
+    <rect
+       y="22.362183"
+       x="44"
+       height="24"
+       width="24"
+       id="rect6325"
+       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    <path
+       style="fill:#c67240;fill-opacity:1;fill-rule:evenodd;stroke:#84694a;stroke-width:1.00000012px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="M 55.999999,27.862183 C 52.411999,27.862183 49.499999,30.774183 49.499999,34.362183 C 49.499999,37.950185 52.411999,40.862186 55.999999,40.862185 C 59.587999,40.862185 62.499999,37.950185 62.499999,34.362183 C 62.499999,30.774183 59.587999,27.862183 55.999999,27.862183 z M 55.999999,29.487183 C 58.691,29.487183 60.874999,31.671184 60.874999,34.362183 C 60.875,37.053186 58.690999,39.237184 55.999999,39.237184 C 53.309,39.237186 51.124999,37.053184 51.124999,34.362183 C 51.124999,31.671184 53.308999,29.487183 55.999999,29.487183 z"
+       id="path6333" />
+    <g
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="/home/kalle/devel/subterranean/data/default/cursor_use.png"
+       id="g6373"
+       transform="translate(0,50.25)">
+      <rect
+         y="22.362183"
+         x="44"
+         height="24"
+         width="24"
+         id="rect6375"
+         style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <path
+         style="opacity:1;fill:#aea558;fill-opacity:1;fill-rule:evenodd;stroke:#847e4a;stroke-width:1.00000012px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         d="M 55.999997,24.862183 C 50.755998,24.862183 46.499998,29.118182 46.499998,34.362182 C 46.499998,39.606184 50.755998,43.862185 55.999997,43.862184 C 61.243997,43.862184 65.499997,39.606184 65.499997,34.362182 C 65.499997,29.118182 61.243997,24.862183 55.999997,24.862183 z M 55.999997,27.237182 C 59.932998,27.237182 63.124997,30.429183 63.124997,34.362182 C 63.124998,38.295185 59.932997,41.487183 55.999997,41.487183 C 52.066999,41.487185 48.874998,38.295183 48.874998,34.362182 C 48.874999,30.429184 52.066998,27.237182 55.999997,27.237182 z"
+         id="path6377" />
+    </g>
+    <g
+       id="g5533"
+       inkscape:export-filename="/home/kalle/devel/subterranean/data/default/cursor_default.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         y="22.362183"
+         x="14"
+         height="24"
+         width="24"
+         id="rect5480"
+         style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <path
+         sodipodi:nodetypes="csssc"
+         style="fill:#a29a53;fill-opacity:1;fill-rule:evenodd;stroke:#84694a;stroke-width:1.00000011999999994px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         d="M 26.000002,31.862184 C 24.620001,31.862184 23.500001,32.982184 23.500001,34.362184 C 23.500001,35.742186 24.620001,36.862186 26.000002,36.862186 C 27.380002,36.862186 28.500001,35.742186 28.500001,34.362184 C 28.500001,32.982184 27.380002,31.862184 26.000002,31.862184 z"
+         id="path5530" />
+    </g>
+    <g
+       id="g5534"
+       inkscape:export-filename="/home/kalle/devel/subterranean/data/default/cursor_talk.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       transform="translate(30,0)">
+      <rect
+         style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect5515"
+         width="24"
+         height="24"
+         x="112"
+         y="22.362183" />
+      <path
+         id="path5522"
+         d="M 133.53125,28.125 L 113.375,28.46875 C 113.02144,28.115196 117.61643,39.260721 124.6875,39.4375 C 131.75856,39.614277 133.53124,28.125 133.53125,28.125 z M 130.875,30.1875 C 130.62443,31.051028 130.37103,32.001763 129.90625,33 C 129.31635,34.266979 128.55528,35.463195 127.6875,36.25 C 126.81972,37.036805 125.96653,37.436663 124.75,37.40625 C 122.26887,37.344221 119.72885,35.09624 117.90625,32.5625 C 117.34444,31.781484 117.02117,31.138831 116.625,30.4375 L 130.875,30.1875 z"
+         style="opacity:1;fill:#c67240;fill-opacity:1;fill-rule:evenodd;stroke:#84694a;stroke-width:1.00000012px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    </g>
+    <g
+       id="g5504"
+       inkscape:export-filename="/home/kalle/devel/subterranean/data/default/cursor_exit.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       transform="translate(0,-35)">
+      <path
+         sodipodi:nodetypes="ccccc"
+         id="path5506"
+         d="M 79.5,25.862183 L 85.5,24.862183 L 85.5,37.862183 L 79.5,42.862183 L 79.5,25.862183 z"
+         style="fill:#c67240;fill-opacity:1;fill-rule:evenodd;stroke:#84694a;stroke-width:1.00000012px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <rect
+         style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect5508"
+         width="24"
+         height="24"
+         x="74"
+         y="22.362183" />
+      <path
+         id="path5510"
+         d="M 77.5,23.875 L 77.5,43.875 L 94.5,43.875 L 94.5,23.875 L 77.5,23.875 z M 79.5,25.875 L 92.5,25.875 L 92.5,41.875 L 79.5,41.875 L 79.5,25.875 z"
+         style="opacity:1;fill:#c67240;fill-opacity:1;fill-rule:evenodd;stroke:#84694a;stroke-width:1.00000012px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    </g>
+    <g
+       id="g5535"
+       inkscape:export-filename="/home/kalle/devel/subterranean/data/default/cursor_exit_north.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         y="22.362183"
+         x="74"
+         height="24"
+         width="24"
+         id="rect5496"
+         style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <path
+         sodipodi:nodetypes="cccccccc"
+         id="path5515"
+         d="M 81.469637,45.088582 L 83.725807,31.917997 L 78.135629,31.917997 L 86.579127,23.212466 L 93.763241,31.755148 L 89.141293,31.538015 L 91.899849,44.980015 L 81.469637,45.088582 z"
+         style="fill:#c67240;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <g
+       id="g5563"
+       inkscape:export-filename="/home/kalle/devel/subterranean/data/default/cursor_exit_south.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect5519"
+         width="24"
+         height="24"
+         x="75"
+         y="52.362183" />
+      <path
+         style="fill:#c67240;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="M 85.161547,53.711549 L 83.516995,66.12876 L 75.544309,66.12876 L 86.282646,75.180489 L 98.354561,66.298086 L 90.043222,66.523853 L 88.885619,53.824434 L 85.161547,53.711549 z"
+         id="path5517"
+         sodipodi:nodetypes="cccccccc" />
+    </g>
+    <g
+       id="g5539"
+       inkscape:export-filename="/home/kalle/devel/subterranean/data/default/cursor_exit_east.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect5521"
+         width="24"
+         height="24"
+         x="104"
+         y="22.362183" />
+      <path
+         style="fill:#c67240;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="M 105.24621,32.526624 L 118.9007,32.160275 L 118.9007,25.484212 L 126.65266,34.917883 L 119.06953,44.407826 L 119.29464,37.394092 L 105.35877,37.513271 L 105.24621,32.526624 z"
+         id="path5523"
+         sodipodi:nodetypes="cccccccc" />
+    </g>
+    <g
+       id="g5559"
+       inkscape:export-filename="/home/kalle/devel/subterranean/data/default/cursor_exit_west.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         y="52.362183"
+         x="105"
+         height="24"
+         width="24"
+         id="rect5525"
+         style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <path
+         sodipodi:nodetypes="cccccccc"
+         id="path5529"
+         d="M 127.89009,67.405373 L 114.01009,67.777773 L 114.01009,74.564099 L 106.1301,64.97462 L 113.83847,55.327939 L 113.60964,62.457514 L 127.77568,62.336366 L 127.89009,67.405373 z"
+         style="fill:#c67240;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+  </g>
+</svg>

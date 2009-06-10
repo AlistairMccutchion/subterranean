@@ -1,1 +1,1 @@
-#f00	exit
+#f00	exit_north

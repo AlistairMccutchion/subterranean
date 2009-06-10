@@ -10,7 +10,7 @@ class Room(level.Room):
         level.Level.init(self)
 
         self.player = self.objs['player']
-        self.grumpyman = self.objs['grumpyman']
+        self.grumpyman = self.objs['npc_grumpyman']
 
         self.objs["bulbleft"].state = "r"
         self.objs["bulbmiddle"].state = "r"
@@ -20,13 +20,17 @@ class Room(level.Room):
         self.got('worm')
 
         #self.player.can_walk = False
-        self.player.state = "omg"
+        #self.player.state = "omg"
 
-        '''
         self.script([
-            """grumpyman:You can't leave until you've shown me your progress on the Elderstein project!"""
+            """npc_grumpyman:Foobar! I am so sick and tired of you right now! Where are the files!?""",
+            """player:Um, Sir... What files?""",
+            """npc_grumpyman:Argh! The ELDERSTEIN files! The files that were supposed to be on my desk yesterday!""",
+            """player:Ah, sorry. My bad. Of course I have those files ready.""",
+            """thinking:(I have NO idea what he's talking about.)""",
+            """npc_grumpyman:Hurry up! I will stay here until you show those files to me!""",
+            """player:...Of course, boss! Let me just get the files from my computer!"""
             ])
-        '''
 
     def checkbulbs(self):
         return self.objs["bulbleft"].state == "b" and self.objs["bulbmiddle"].state == "o" and self.objs["bulbright"].state == "b"
@@ -44,38 +48,67 @@ class Room(level.Room):
             if self.checkbulbs() and "puzzle_got_clue" in self.info:
                 self.info.append("puzzle_complete_bulbs")
                 self.script([
-                    """player: Now I get it! Blue Orange Blue! BOB!""",
-                    """grumpyman: Well done, laddie. Even I couldn't figure that one out. Here, take this silver key!"""
+                    """player: Now I remember! Blue Orange Blue! BOB!""",
                     ])
-                self.got('key')
+                self.objs["computer"].state = "on"
+
+    def look_computer(self):
+        if "puzzle_complete_bulbs" in self.info:
+            self.player.face("computer")
+            self.script([
+                """player: It's online! Now I can access those files!"""
+                ])
+        else:
+            self.player.face("computer")
+            self.script([
+                """player: I need to enter my personal password to use it."""
+                ])
+
+    def use_computer(self):
+        if "puzzle_complete_bulbs" in self.info:
+            self.player.face("computer")
+            self.script([
+                """player: Let me see...""",
+                """player: Ah, there are the files!""",
+                ])
+            self.info.append("puzzle_got files")
+        else:
+            self.player.face("computer")
+            self.script([
+                """player: I need to enter my personal password to use it."""
+                ])
 
     def look_note1(self):
         self.player.face("note1")
         self.script([
             """note1: BOB was here!"""
-            #"""player: Hmm... Why is BOB written in uppercase?""",
             ])
         self.info.append("puzzle_got_clue")
 
     def look_note2(self):
         self.player.face("note2")
         self.script([
-            """note2: Don't forget mum.""",
-            """player: Oh oh..."""
+            """note2: Don't forget to collect data for the Elderstein project!.""",
+            """player: Uh oh..."""
             ])
 
     def look_note3(self):
         self.player.face("note3")
         self.script([
-            """note3: If you're reading this you're doing it WRONG!"""
+            """note3: Remember, rock always beats scissors."""
             ])
 
-    def use_grumpyman(self):
-        self.player.walkpos('grumpyman',self._use_grumpyman)
+    def use_npc_grumpyman(self):
+        if "free_to_leave" not in self.info:
+            self.player.walkpos('npc_grumpyman',self._use_npc_grumpyman)
+        else:
+            self.script([
+                """think:(I should just leave him alone and get those files.)"""
+            ])
 
-    def _use_grumpyman(self):
-        #self.say("""grumpyman:Whatcha lookin' at?""")
-        self.talkto(self.talk_grumpyman,'first')
+    def _use_npc_grumpyman(self):
+        #self.say("""npc_grumpyman:Whatcha lookin' at?""")
+        self.talkto(self.talk_npc_grumpyman,'first')
 
     def foodtalk(self):
         if 'food' not in self.info:
@@ -83,44 +116,58 @@ class Room(level.Room):
     def givechili(self):
         if 'chili' not in self.inv:
             self.got('chili')
+    def free_to_leave(self):
+        self.info.append("free_to_leave")
     
-    def talk_grumpyman(self,topic):
+    def talk_npc_grumpyman(self,topic):
         opts = []
         if topic == "first":
             opts.append((
                     """You look kind of big for a dwarf...""",[None,
-                    """grumpyman:I'm big boned, so what!?""",
+                    """npc_grumpyman:I'm big boned, so what!?""",
+                    """player:Nothing!""",
                     ],'first'))
             if 'puzzle_complete_bulbs' not in self.info:
                 opts.append((
-                        """What are those bulbs for?""",[None,
-                        """grumpyman:It's a puzzle. I'm not able to solve it myself. Solve it for me and get a prize!""",
+                        """I can't remember my password.""",[None,
+                        """npc_grumpyman:Aren't you good for anything, you bastard? You'd better remember - or I'll make you!""",
+                        """player:Oh, er... now I remember!""",
+                        """thinking:(I seriously need to figure this out. Soon.)""",
                         ],'first'))
-            if 'puzzle_complete_bulbs' in self.info:
+            if 'puzzle_got files' in self.info:
                 opts.append((
-                        """I figured out the puzzle!""",[None,
-                        """grumpyman:Yes, you already told me that. Go play somewhere else!""",
-                        ],'first'))
+                        """Here are the files!""",[None,
+                        """npc_grumpyman:Let me have a look...""",
+                        """npc_grumpyman:Just two pages? Are you kidding me!? """,
+                        """player:No, sorry. I- need to talk with... S- Sandra, about that.""",
+                        """npc_grumpyman:Summers? You mean she has the rest of the data?""",
+                        """player:Yes, exactly!""",
+                        """npc_grumpyman:Aargh, then get go and get it you worthless hippie!""",
+                        """npc_grumpyman:You have fifteen minutes. If I don't have that report on my desk by then, you're toast!""",
+                        """player:Yes, Sir! Going now, Sir!""",
+                        """thinking:(What a mess!)""",
+                        (self.free_to_leave,)]
+                        ,'exit'))
             if 'puzzle_got_clue' in self.info:
                 opts.append((
-                        """Do you know who this BOB guy is?""",[None,
-                        """grumpyman:Nope, I haven't been able to figure that out.""",
+                        """Do you know who Bob is?""",[None,
+                        """npc_grumpyman:Who? We don't have any Bob working here!""",
                         ],'first'))
             if 'worm' in self.info and 'food' not in self.info:
                 opts.append((
                     """Did you really eat that worm?""",[None,
-                    """grumpyman:Yup. T'was delicious too!""",
+                    """npc_grumpyman:Yup. Now get me those files!""",
                     (self.foodtalk,)
                     ],'first'))
             if 'food' in self.game.data['info'] and 'worm' not in self.inv and 'chili' not in self.inv:
                 opts.append((
-                            """Is there anything you won't eat?""",[None,
-                            """grumpyman:Argh! There be but one thing...""",
-                            """grumpyman:This blasted chili fruit! Here, you can have it!""",
-                            (self.givechili,)
-                            ],'first'))
+                    """Is there anything you won't eat?""",[None,
+                    """npc_grumpyman:Argh! There be but one thing...""",
+                    """npc_grumpyman:This blasted chili fruit! Here, you can have it!""",
+                    (self.givechili,)
+                    ],'first'))
             opts.append((
-                """I've got lots to do. So... See ya!""",[None,]
+                """I'll be right back, Sir!""",[None,]
                 ,'exit'))
         return opts
 
@@ -131,22 +178,21 @@ class Room(level.Room):
             "player:"+responses[1]
             ])
 
-    def look_grumpyman(self):
+    def look_dropzone(self):
         self.script([
-            """player:Wow, that's a big dwarf!"""
+            """player:It's a wastebin. There's nothing interesting in it."""
             ])
 
-    
-    def worm_grumpyman(self):
+    def look_npc_grumpyman(self):
+        self.script([
+            """player:Mr.Grumpley: The horror of the seven floors."""
+            ])
+
+    def worm_npc_grumpyman(self):
         self.lost('worm')
         self.info.append('worm')
         self.script([
-            """grumpyman:Oh thank ye, 'tis my favourite!"""
-            ])
-    def rock_grumpyman(self):
-        self.lost('rock')
-        self.script([
-            """grumpyman:Ouch! Why'd you throw that at me, you asshole!?"""
+            """npc_grumpyman:Oh thank ye, 'tis my favourite! You're not trying to bribe me, are ye?"""
             ])
 
     def examine_chili(self):
@@ -155,9 +201,9 @@ class Room(level.Room):
             """player:...and not in the good sense of the word."""
         ])
 
-    def chili_grumpyman(self):
+    def chili_npc_grumpyman(self):
         self.script([
-            """grumpyman:Oh no! That be much too spicy for ol' me!"""
+            """npc_grumpyman:Oh no! That be much too spicy for ol' me!"""
         ])
 
     def chili_dropzone(self):
@@ -171,25 +217,6 @@ class Room(level.Room):
             """player:That's way too hot for me!"""
             ])
 
-    def use_rock(self):
-        self.player.walkpos('rock',self._use_rock)
-
-    def _use_rock(self):
-        del self.objs['rock']
-        self.data['del_rock'] = 1
-        self.got('rock')
-
-    def look_rock(self):
-        self.player.face("rock")
-        self.script([
-            """player:It's a rock."""
-            ])
-
-    def examine_rock(self): 
-        self.script([
-            """player:This rock rocks!"""
-            ])
-
     def examine_worm(self):
         self.script([
             """player:Eww. Wriggly."""
@@ -198,20 +225,6 @@ class Room(level.Room):
     def examine_potion(self):
         self.script([
             """player:Potion of health (500+)."""
-            ])
-
-    def examine_key(self):
-        self.script([
-            """player:One key to rule them all!."""
-            ])
-
-    def key_dropzone(self):
-        self.player.walkpos('dropzone',self._key_dropzone)
-
-    def _key_dropzone(self):
-        self.lost('key')
-        self.script([
-            """player:I dropped the key in the zone. Bye bye."""
             ])
 
     def worm_dropzone(self):
@@ -261,37 +274,50 @@ class Room(level.Room):
             """Sweet, it's a fire potion!"""
             ])
 
+    #FIXME Later: This is buggy.
     def use_bulbleft(self):
+        #self.player.walkpos('bulbleft',self._use_bulbleft)
+        self.togglebulb("bulbleft")
+
+    def _use_bulbleft(self):
         self.togglebulb("bulbleft")
 
     def use_bulbmiddle(self):
+        #self.player.walkpos('bulbmiddle',self._use_bulbmiddle)
+        self.togglebulb("bulbmiddle")
+
+    def _use_bulbmiddle(self):
         self.togglebulb("bulbmiddle")
 
     def use_bulbright(self):
+        #self.player.walkpos('bulbright',self._use_bulbright)
+        self.togglebulb("bulbright")
+
+    def _use_bulbright(self):
         self.togglebulb("bulbright")
 
     def look_bulbleft(self):
         self.script([
-            """player:It's a light bulb."""
+            """player:It's a button for the computer password."""
             ])
 
     def look_bulbmiddle(self):
         self.script([
-            """player:It's a light bulb."""
+            """player:It's a button for the computer password."""
             ])
 
     def look_bulbright(self):
         self.script([
-            """player:It's a light bulb."""
+            """player:It's a button for the computer password."""
             ])
-    '''
-    def use_exit(self):
-        if "can_leave" in self.info:
-            self.player.walkpos('exit',self._use_exit)
+    def use_exit_north(self):
+        if "free_to_leave" in self.info:
+            print "END!"
+            #self.player.walkpos('exit_north',self._use_exit_north)
         else:
             self.script([
-            """player:No can do."""
+            """npc_grumpyman:No way!"""
             ])
-    def _use_exit(self):
-        self.goto('test')
-    '''
+
+    def _use_exit_north(self):
+        self.goto('corridor')

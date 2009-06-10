@@ -1,0 +1,2 @@
+player	player	220	400	100
+grumpley	grumpley	420	380	100
