@@ -774,6 +774,8 @@ class Level:
                     self.game.currentcursor = "exit_east"
                 elif "west" in hover[0]:
                     self.game.currentcursor = "exit_west"
+            elif "item_" in hover[0]:
+                self.game.currentcursor = "pickup"
             elif "npc_" in hover[0]:
                 self.game.currentcursor = "talk"
             elif len(hover) == 1 and (hover[0] == "player" or "_pos" in hover[0]):

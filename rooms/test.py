@@ -77,6 +77,14 @@ class Room(level.Room):
             self.script([
                 """player: I need to enter my personal password to use it."""
                 ])
+    def use_note1(self):
+        self.look_note1()
+
+    def use_note2(self):
+        self.look_note2()
+
+    def use_note3(self):
+        self.look_note3()
 
     def look_note1(self):
         self.player.face("note1")
@@ -314,10 +322,12 @@ class Room(level.Room):
         if "free_to_leave" in self.info:
             print "END!"
             #self.player.walkpos('exit_north',self._use_exit_north)
+            #self._use_exit_north
         else:
             self.script([
             """npc_grumpyman:No way!"""
             ])
+            self._use_exit_north()
 
     def _use_exit_north(self):
-        self.goto('corridor')
+        self.goto('office')

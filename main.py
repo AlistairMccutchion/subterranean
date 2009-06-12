@@ -41,6 +41,7 @@ class Game(engine.Game):
         self.cursors = {}
         self.cursors["default"] = pygame.image.load(os.path.join("data","default","cursor_default.png")).convert_alpha()
         self.cursors["use"] = pygame.image.load(os.path.join("data","default","cursor_use.png")).convert_alpha()
+        self.cursors["pickup"] = pygame.image.load(os.path.join("data","default","cursor_pickup.png")).convert_alpha()
         self.cursors["exit_north"] = pygame.image.load(os.path.join("data","default","cursor_exit_north.png")).convert_alpha()
         self.cursors["exit_south"] = pygame.image.load(os.path.join("data","default","cursor_exit_south.png")).convert_alpha()
         self.cursors["exit_east"] = pygame.image.load(os.path.join("data","default","cursor_exit_east.png")).convert_alpha()
@@ -83,8 +84,8 @@ class Game(engine.Game):
 
     def draw_cursor(self):
 
-        x = pygame.mouse.get_pos()[0]-12
-        y = pygame.mouse.get_pos()[1]-12
+        x = pygame.mouse.get_pos()[0]
+        y = pygame.mouse.get_pos()[1]
 
         self.screen.blit(self.cursors[self.currentcursor],(x,y))
         
