@@ -1,5 +1,5 @@
 player	player	300	420	100
-item_rock	rock	320	450	100
+item_rock	item_rock	320	450	100
 note1	point16	302	161	100
 note2	point16	319	147	100
 note3	point16	325	170	100

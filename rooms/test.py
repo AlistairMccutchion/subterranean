@@ -11,6 +11,10 @@ class Room(level.Room):
 
         self.player = self.objs['player']
         self.grumpyman = self.objs['npc_grumpyman']
+        #KALLE: I know, we should define this somewhere else. See "Issues" on github.
+        self.player.text_color = "#ffffffff"
+        self.grumpyman.text_color = "#8ae234ff"
+        self.objs['thinking'].text_color = "#729fcfff"
 
         self.objs["bulbleft"].state = "r"
         self.objs["bulbmiddle"].state = "r"
@@ -244,11 +248,15 @@ class Room(level.Room):
             """player:There goes the worm. Bye little fellow!"""
             ])
 
-    def rock_dropzone(self):
+    def use_item_rock(self):
+        del self.objs['item_rock']
+        self.got('item_rock')
+
+    def item_rock_dropzone(self):
         self.player.walkpos('dropzone',self._rock_dropzone)
 
-    def _rock_dropzone(self):
-        self.lost('rock')
+    def _item_rock_dropzone(self):
+        self.lost('item_rock')
         self.script([
             """player:I'm glad to be rid of this goddamn rock."""
             ])
@@ -327,7 +335,5 @@ class Room(level.Room):
             self.script([
             """npc_grumpyman:No way!"""
             ])
-            self._use_exit_north()
-
     def _use_exit_north(self):
         self.goto('office')

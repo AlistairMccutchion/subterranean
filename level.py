@@ -27,6 +27,7 @@ class Obj:
         self.focus = None
         
         self.text = None
+        self.text_color = "#ffffffff"
         self.text_timer = 0
         
         self.frame = 0
@@ -526,7 +527,7 @@ class Level:
                         x = 8
                     for dx,dy in [(-1,-1),(-1,1),(1,-1),(1,1)]:
                         screen.blit(img,(x+dx,y+dy))
-                    img = fnt.render(line,1,(255,255,255))
+                    img = fnt.render(line,1,Color(o.text_color))
                     screen.blit(img,(x,y))
                     y += h
 
@@ -1085,11 +1086,11 @@ class Talk(engine.State):
         n = 0
         x,y = 10,400
         for text in self.opts: 
-            c = (178,175,126)
-            c_shadow = (118,115,66)
+            c = Color("#eeeeecff")
+            c_shadow = Color("#323331ff")
             if n == hover:
-                c = (222,100,58)
-                c_shadow = (162,40,8)
+                c = Color("#fc4303ff")
+                c_shadow = Color("#3d1b0eff")
             #KALLE: Add a nice shadow
             screen.blit(fnt.render(text[0],1,c_shadow),(x+1,y+1))
             img = fnt.render(text[0],1,c)

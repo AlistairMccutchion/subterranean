@@ -1,2 +1,0 @@
-[*] The last line of a conversation is still displayed even if you click the
-mouse button.
