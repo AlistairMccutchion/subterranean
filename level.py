@@ -793,9 +793,15 @@ class Level:
                 for hover in self.find(e.pos):
                     if hover: #use_ action
                         fnc = 'use_%s'%hover
+                        altfnc = 'look_%s'%hover
                         print fnc
                         if hasattr(self,fnc):
                             r = getattr(self,fnc)()
+                            if r != False: return r
+                        #TOMMY: So, so ugly. If there's no use_ function available, it defaults to looking.
+                        # Should probably make using and looking functions to avoid writing the same thing twice.
+                        elif hasattr(self,altfnc):
+                            r = getattr(self,altfnc)()
                             if r != False: return r
 
                     

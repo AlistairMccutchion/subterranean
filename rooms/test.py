@@ -171,7 +171,7 @@ class Room(level.Room):
                     """npc_grumpyman:Yup. Now get me those files!""",
                     (self.foodtalk,)
                     ],'first'))
-            if 'food' in self.game.data['info'] and 'worm' not in self.inv and 'chili' not in self.inv:
+            if 'food' in self.game.data['info'] and 'worm' not in self.inv and 'chili' not in self.inv and 'firepotion' not in self.inv:
                 opts.append((
                     """Is there anything you won't eat?""",[None,
                     """npc_grumpyman:Argh! There be but one thing...""",
@@ -188,11 +188,6 @@ class Room(level.Room):
         random.shuffle(responses)
         self.script([
             "player:"+responses[1]
-            ])
-
-    def look_dropzone(self):
-        self.script([
-            """player:It's a wastebin. There's nothing interesting in it."""
             ])
 
     def look_npc_grumpyman(self):
@@ -217,12 +212,6 @@ class Room(level.Room):
         self.script([
             """npc_grumpyman:Oh no! That be much too spicy for ol' me!"""
         ])
-
-    def chili_dropzone(self):
-        self.lost('chili')
-        self.script([
-            """I'm surprised it didn't catch on fire."""
-            ])
 
     def chili_player(self):
         self.script([
@@ -251,24 +240,6 @@ class Room(level.Room):
     def use_item_rock(self):
         del self.objs['item_rock']
         self.got('item_rock')
-
-    def item_rock_dropzone(self):
-        self.player.walkpos('dropzone',self._rock_dropzone)
-
-    def _item_rock_dropzone(self):
-        self.lost('item_rock')
-        self.script([
-            """player:I'm glad to be rid of this goddamn rock."""
-            ])
-
-    def potion_dropzone(self):
-        self.player.walkpos('dropzone',self._potion_dropzone)
-
-    def _potion_dropzone(self):
-        self.lost('potion')
-        self.script([
-            """player:Now the dropzone gains 500 hp. Neat."""
-            ])
 
     def potion_player(self):
         self.lost('potion')
