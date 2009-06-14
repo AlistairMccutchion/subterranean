@@ -1088,9 +1088,13 @@ class Talk(engine.State):
         #screen.fill((0,0,0),(0,400,640,80))
         fnt = self.game.font
         pos = pygame.mouse.get_pos()
-        hover = (pos[1]-400) / 20
         n = 0
-        x,y = 10,400
+        #TOMMY: Here be dragons. Also calculates the area needed in order to
+        # be able to draw all options. The y value should somehow be sent
+        # to the event method. 
+        y = 480 - (len(self.opts)*20)
+        hover = (pos[1]-y) / 20
+        x = 10
         for text in self.opts: 
             c = Color("#eeeeecff")
             c_shadow = Color("#323331ff")
@@ -1111,7 +1115,10 @@ class Talk(engine.State):
     def event(self,e):
         #KALLE: Dialog alternatives
         if e.type is MOUSEBUTTONDOWN:
-            n = (e.pos[1]-400) / 20
+            #TOMMY: Hack to get the hover to sync up with the dynamic dialogue area.
+            # Should really get the y value from the paint method.
+            y = 480 - (len(self.opts)*20)
+            n = (e.pos[1]-y) / 20
             if n < 0 or n >= len(self.opts): return
 
             text,script,topic = self.opts[n]
