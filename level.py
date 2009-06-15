@@ -792,18 +792,16 @@ class Level:
             if b1:
                 for hover in self.find(e.pos):
                     if hover: #use_ action
-                        fnc = 'use_%s'%hover
-                        altfnc = 'look_%s'%hover
-                        print fnc
-                        if hasattr(self,fnc):
+                        primaryfnc = 'use_%s'%hover
+                        secondaryfnc = 'look_%s'%hover
+                        fnc = None
+                        if hasattr(self,primaryfnc):
+                            fnc = primaryfnc
+                        elif hasattr(self,secondaryfnc):
+                            fnc = secondaryfnc
+                        if fnc != None:
                             r = getattr(self,fnc)()
                             if r != False: return r
-                        #TOMMY: So, so ugly. If there's no use_ function available, it defaults to looking.
-                        # Should probably make using and looking functions to avoid writing the same thing twice.
-                        elif hasattr(self,altfnc):
-                            r = getattr(self,altfnc)()
-                            if r != False: return r
-
                     
                 #self.walkto(self.player,e.pos)
                 self.player.walkto(e.pos)
@@ -1094,6 +1092,7 @@ class Talk(engine.State):
         # to the event method. 
         y = 480 - (len(self.opts)*20)
         hover = (pos[1]-y) / 20
+
         x = 10
         for text in self.opts: 
             c = Color("#eeeeecff")
