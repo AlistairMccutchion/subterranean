@@ -1,1 +1,0 @@
-[*] Opening inventory using TAB doesn't seem to work.
