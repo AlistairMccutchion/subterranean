@@ -531,7 +531,6 @@ class Level:
                     y += h
 
         self.game.draw_cursor()
-        self.game.draw_inventory_icon()
 
     def paint_edit(self,screen):
         self.paint_main(screen)
@@ -575,6 +574,7 @@ class Level:
     def paint_normal(self,screen):
         self.paint_main(screen)
         self.paint_inv_box(screen)
+        self.game.draw_inventory_icon()
         pygame.display.flip()
         
     def paint_inv(self,screen):
@@ -792,7 +792,7 @@ class Level:
             if b1:
             	print e.pos[0]
             	print e.pos[1]
-            	if e.pos[0] <= 630 and e.pos[0] >= 580 and e.pos[1] <= 70 and e.pos[1] >= 10 and self.showinventory == False:
+            	if e.pos[0] <= 630 and e.pos[0] >= 580 and e.pos[1] <= 470 and e.pos[1] >= 410 and self.showinventory == False:
             		self.showinventory = True
                 for hover in self.find(e.pos):
                     if hover: #use_ action

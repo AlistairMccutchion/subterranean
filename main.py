@@ -51,6 +51,9 @@ class Game(engine.Game):
         self.currentmousepos = (0,0)
         pygame.mouse.set_visible(False)
 
+		#TOMMY: The inventory icon.        
+        self.inventory_icon = pygame.image.load(os.path.join('data','default','bucket2.png')) 
+
         if (v&FULLSCREEN)!=0:
             pygame.time.wait(2000)
         
@@ -89,9 +92,8 @@ class Game(engine.Game):
 
         self.screen.blit(self.cursors[self.currentcursor],(x,y))
     
-    def draw_inventory_icon(self):
-    	self.inventory_icon = pygame.image.load(os.path.join('data','inv','bucket2.png'))
-    	self.screen.blit(self.inventory_icon,(580,10))
+    def draw_inventory_icon(self):   	
+    	self.screen.blit(self.inventory_icon,(580,410))
         
     def sfx(self,name,loops=0):
         if not pygame.mixer.get_init(): return
