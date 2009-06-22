@@ -573,8 +573,8 @@ class Level:
         
     def paint_normal(self,screen):
         self.paint_main(screen)
-        self.paint_inv_box(screen)
         self.game.draw_inventory_icon()
+        self.paint_inv_box(screen)
         pygame.display.flip()
         
     def paint_inv(self,screen):
