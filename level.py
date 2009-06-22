@@ -474,7 +474,6 @@ class Level:
         getattr(self,'paint_%s'%self.mode)(screen)
         
     def paint_main(self,screen):
-        self.game.draw_cursor()
         if hasattr(self,'player'):
             self.follow(self.player)
         
@@ -532,6 +531,7 @@ class Level:
                     y += h
 
         self.game.draw_cursor()
+        self.game.draw_inventory_icon()
 
     def paint_edit(self,screen):
         self.paint_main(screen)
@@ -790,6 +790,10 @@ class Level:
         if e.type is MOUSEBUTTONDOWN and self.showinventory == False:
             b1,b2,b3 = pygame.mouse.get_pressed()
             if b1:
+            	print e.pos[0]
+            	print e.pos[1]
+            	if e.pos[0] <= 630 and e.pos[0] >= 580 and e.pos[1] <= 70 and e.pos[1] >= 10 and self.showinventory == False:
+            		self.showinventory = True
                 for hover in self.find(e.pos):
                     if hover: #use_ action
                         primaryfnc = 'use_%s'%hover
