@@ -91,8 +91,6 @@ class Game(engine.Game):
     
     def draw_inventory_icon(self):
     	self.inventory_icon = pygame.image.load(os.path.join('data','inv','bucket2.png'))
-    	print "Trying my best to draw the inventory icon."
-    	print self.inventory_icon
     	self.screen.blit(self.inventory_icon,(580,10))
         
     def sfx(self,name,loops=0):
