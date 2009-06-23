@@ -790,8 +790,6 @@ class Level:
         if e.type is MOUSEBUTTONDOWN and self.showinventory == False:
             b1,b2,b3 = pygame.mouse.get_pressed()
             if b1:
-            	print e.pos[0]
-            	print e.pos[1]
             	if e.pos[0] <= 630 and e.pos[0] >= 580 and e.pos[1] <= 470 and e.pos[1] >= 410 and self.showinventory == False:
             		self.showinventory = True
                 for hover in self.find(e.pos):
