@@ -38,8 +38,15 @@ class Obj:
         self.images = []
         self._rect = None
         self.can_walk = True
+
+        self.animating = False
         
         self.load()
+
+    def animate(self,state):
+        self.animating = True
+        self.frame = 0
+        self.state = state
         
     def loop(self):
         #KALLE: Not setting state to "stand" if standing still every loop
@@ -48,14 +55,13 @@ class Obj:
 
         #For the player
         if self.name == "player":
-            if len(self.path):
-                self.state = "walk"
-            elif not len(self.path) and self.talking:
-                self.state = "talk"
-            elif not len(self.path) and not self.talking:
-                self.state = "stand"
-            elif self.state == "":
-                self.state = "stand"
+            if self.animating == False:
+                if len(self.path):
+                    self.state = "walk"
+                elif not len(self.path) and not self.talking:
+                    self.state = "stand"
+                elif self.state == "":
+                    self.state = "stand"
 
         #For talking characters
         if self.talking and self.state != "talk":
@@ -98,10 +104,13 @@ class Obj:
             #(Galen matematik, behöver rumsspecifika grejer här. Det är ju dessutom bara spelaren som ska skalas!)
             #if self.name == "player":
              #   self.scale = math.ceil((self.rect.y + 181)/3.7)
+        state_facing = '%s_%s'%(self.state,self.facing)
+        state_regular = '%s'%(self.state)
 
-        if self.facing != None:
-            cls = '%s_%s'%(self.state,self.facing)
-        else:
+
+        #KALLE: Needs cleaning up. Badly
+        cls = '%s_%s'%(self.state,self.facing)
+        if cls not in self.data:
             cls = '%s'%(self.state)
         if cls not in self.data:
             cls = 'default'
@@ -112,19 +121,20 @@ class Obj:
             #if self.name != "player":
             #    print self.state
 
-            if 'loop' in self.data[cls].keys() and self.data[cls]['loop'] == 0:
-                looping = False
-            else:
-                looping = True
-                self.done = False
-
             self.image = self._scale(r[self.frame%r['frames']])
-            if not looping and self.frame%r['frames'] == r['frames']-1:
-                self.state = "default"
-                self.done = True
+                #print r,self.frame%r['frames'],r['frames']-1
+            if self.animating and self.frame%r['frames'] == r['frames']-1:
+                self.animating = False
 
-            
-            if r['speed'] != 0 and self.level.frame%r['speed'] == 0:
+            #KALLE: To push to next frame or not:
+            if self.state == "walk" or self.state == "talk":
+                loop = True
+            elif self.animating == False:
+                loop = False
+            else:
+                loop = True
+
+            if loop and r['speed'] != 0 and self.level.frame%r['speed'] == 0:
                 self.frame += 1
 
         self._rect = pygame.Rect(self.rect)
@@ -948,10 +958,9 @@ class Level:
     def wait(self):
         _done = True
         for o in self.objs.values()[:]:
-            if len(o.path) or o.text != None: _done = False
+            if len(o.path) or o.text != None or o.animating == True: _done = False
         return _done
-        
-                
+
     def talkto(self,fnc,topic):
         return self.talk(fnc,topic)
         
@@ -1018,6 +1027,7 @@ class Script(engine.State):
                 self.script.append((self.room.wait,))
             else:
                 self.script.append(line)
+                self.script.append((self.room.wait,))
         self.skip = False
         
     def loop(self):
@@ -1034,7 +1044,6 @@ class Script(engine.State):
         fnc = todo[0]
         params = todo[1:]
         r = fnc(*params)
-        #print fnc,params,r
         #Tommy: Ugly hack to skip a single line if the mouse is clicked. Check
         # the method "event" to see where self.nextline comes from.
 

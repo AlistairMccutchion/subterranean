@@ -5,6 +5,10 @@ import random
 class Room(level.Room):
     def __init__(self,game,value):
         level.Room.__init__(self,game,__name__.split('.')[-1],value)
+
+    def arn(self):
+        print "BAR!"
+        self.player.walkpos('npc_grumpyman')
     
     def init(self):
         level.Level.init(self)
@@ -26,14 +30,20 @@ class Room(level.Room):
         #self.player.can_walk = False
         #self.player.state = "omg"
 
+
         self.script([
+            (self.player.animate,'omg'),
             """npc_grumpyman:Foobar! I am so sick and tired of you right now! Where are the files!?""",
+            (self.player.walkpos,'npc_grumpyman'),
             """player:Um, Sir... What files?""",
             """npc_grumpyman:Argh! The ELDERSTEIN files! The files that were supposed to be on my desk yesterday!""",
             """player:Ah, sorry. My bad. Of course I have those files ready.""",
             """thinking:(I have NO idea what he's talking about.)""",
+            (self.player.animate,'omg'),
             """npc_grumpyman:Hurry up! I will stay here until you show those files to me!""",
-            """player:...Of course, boss! Let me just get the files from my computer!"""
+            """player:...Of course, boss! Let me just get the files from my computer!""",
+            (self.player.walkpos,'computer'),
+            (self.player.animate,'omg')
             ])
 
     def checkbulbs(self):
